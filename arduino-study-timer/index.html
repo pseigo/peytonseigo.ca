@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Arduino Study Timer - Peyton Seigo</title>
+
+  <meta name="author" content="Peyton Seigo">
+  <meta name="description" content="Dedicated study timer built with an Arduino and C++. Implements the Pomodoro Technique, a timeboxing methodology for getting things done.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2577a6">
+
+  <!--
+   _          _ _       _
+  | |        | | |     | |
+  | |__   ___| | | ___ | |
+  | '_ \ / _ \ | |/ _ \| |
+  | | | |  __/ | | (_) |_|
+  |_| |_|\___|_|_|\___/(_)
+
+  While you're here, I thought I'd let you know that
+  I am available for software internships from April
+  to December of 2022. If your team is looking for a
+  computer science student, please feel free to get
+  in touch!
+
+  Otherwise, if you're just curious what makes this
+  site tick or have any other questions, feel free
+  to reach out! I'd love to hear from you.
+
+  https://peytonseigo.ca/contact
+
+  -->
+  
+  <meta property="og:site_name" content="Peyton Seigo">
+  <meta property="og:url" content="https://peytonseigo.ca/arduino-study-timer/">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:site" content="@peytonseigo">
+  <meta name="twitter:creator" content="@peytonseigo">
+
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+
+  <meta property="og:title" content="Arduino Study Timer">
+  <meta name="twitter:title" content="Arduino Study Timer">
+  <meta property="og:description" content="Dedicated study timer built with an Arduino and C++. Implements the Pomodoro Technique, a timeboxing methodology for getting things done.">
+  <meta name="twitter:description" content="Dedicated study timer built with an Arduino and C++. Implements the Pomodoro Technique, a timeboxing methodology for getting things done.">
+  <meta property="og:image" content="https://peytonseigo.ca/images/projects/arduino-study-timer/cover.jpg">
+  <meta name="twitter:image" content="https://peytonseigo.ca/images/projects/arduino-study-timer/cover.jpg">
+  <meta property="og:image:alt" content="An Arduino Mega 2560 wired up for some study sessions. It&#39;s not a bomb, I promise.">
+  <meta name="twitter:image:alt" content="An Arduino Mega 2560 wired up for some study sessions. It&#39;s not a bomb, I promise.">
+
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="180x180" href="https://peytonseigo.ca/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://peytonseigo.ca/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" sizes="16x16" href="https://peytonseigo.ca/favicon-16x16.png">
+  <link rel="manifest" href="https://peytonseigo.ca/site.webmanifest">
+
+  <link rel="stylesheet" href="/css/prism-duotone-light.css"><style>/*! modern-normalize v0.6.0 | MIT License | https://github.com/sindresorhus/modern-normalize */*,::after,::before{box-sizing:border-box}:root{-moz-tab-size:4;-o-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"}hr{height:0}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{padding:0}progress{vertical-align:baseline}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}@font-face{font-family:Charter;src:url(/fonts/charter_regular-webfont.eot);src:url(/fonts/charter_regular-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_bold-webfont.eot);src:url(/fonts/charter_bold-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_bold-webfont.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_italic-webfont.eot);src:url(/fonts/charter_italic-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_italic-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_bold_italic-webfont.eot);src:url(/fonts/charter_bold_italic-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_bold_italic-webfont.woff) format("woff");font-weight:700;font-style:italic;font-display:swap}@font-face{font-family:Lora;src:url(/fonts/lora-variablefont_wght-webfont.woff2) format("woff2"),url(/fonts/lora-variablefont_wght-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Lora;src:url(/fonts/lora-italic-variablefont_wght-webfont.woff2) format("woff2"),url(/fonts/lora-italic-variablefont_wght-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-light-webfont.woff2) format("woff2"),url(/fonts/merriweather-light-webfont.woff) format("woff");font-weight:300;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-lightitalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-lightitalic-webfont.woff) format("woff");font-weight:300;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-regular-webfont.woff2) format("woff2"),url(/fonts/merriweather-regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-italic-webfont.woff2) format("woff2"),url(/fonts/merriweather-italic-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-bold-webfont.woff2) format("woff2"),url(/fonts/merriweather-bold-webfont.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-bolditalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-bolditalic-webfont.woff) format("woff");font-weight:700;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-black-webfont.woff2) format("woff2"),url(/fonts/merriweather-black-webfont.woff) format("woff");font-weight:900;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-blackitalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-blackitalic-webfont.woff) format("woff");font-weight:900;font-style:italic;font-display:swap}@font-face{font-family:"Yeseva One";src:url(/fonts/yesevaone-regular-webfont.woff2) format("woff2"),url(/fonts/yesevaone-regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Light.woff2) format("woff2"),url(/fonts/FiraCode-Light.woff) format("woff");font-weight:300;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Regular.woff2) format("woff2"),url(/fonts/FiraCode-Regular.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Medium.woff2) format("woff2"),url(/fonts/FiraCode-Medium.woff) format("woff");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-SemiBold.woff2) format("woff2"),url(/fonts/FiraCode-SemiBold.woff) format("woff");font-weight:600;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Bold.woff2) format("woff2"),url(/fonts/FiraCode-Bold.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code VF";src:url(/fonts/FiraCode-VF.woff2) format("woff2-variations"),url(/fonts/FiraCode-VF.woff) format("woff-variations");font-weight:300 700;font-style:normal;font-display:swap}footer{color:#828282;font-size:.75em;font-style:italic;letter-spacing:.075em;padding:1em;position:absolute;bottom:0;left:0;right:0;text-align:center}nav.website-nav ul{list-style:none;margin:0 auto}nav.website-nav li{display:inline;margin:10px}nav.website-nav ul>li>a{color:#000;font-size:12pt;font-weight:700;font-style:normal}nav.website-nav ul>li>a:hover{color:#4f4f4f}nav.website-nav ul>li.active>a{color:#828282;font-style:italic}nav.website-nav ul>li.active>a:hover{color:#828282}nav.website-nav ul>li.special>a{color:#2577a6}nav.website-nav ul>li.special>a:hover{color:#4495c4}nav.website-nav ul>li.special.active>a{color:#4495c4;font-style:italic}nav.website-nav ul>li.special.active>a:hover{color:#4495c4}body>main>header{text-align:center;display:inherit;grid-template-columns:inherit;grid-column:full}body>main>header>span{color:#2577a6;font-family:Yeseva One,Lora,Georgia,serif;margin:0;margin-top:.2em}body>main>header>span>h1{margin:0}@media(min-width:601px){body>main>header>span{font-size:24pt;grid-column:main}}@media(max-width:600px){body>main>header>span{font-size:5.6vw;grid-column:main}}body>main>header>div.header-nav{grid-column:main}body>main>header>div.header-nav>nav{position:relative}body>main>header>div.header-nav>nav>ul{padding:0}body>main>header>div.header-nav .fa-ellipsis-h{font-size:36px}body>main>header>div.header-nav .nav-open-btn{display:none}@media(max-width:600px){body>main>header>div.header-nav .nav-open-btn{display:inline-block;height:45px;padding-left:70px;padding-right:70px;-webkit-filter:invert(17%) sepia(68%) saturate(846%) hue-rotate(163deg) brightness(95%) contrast(99%);filter:invert(17%) sepia(68%) saturate(846%) hue-rotate(163deg) brightness(95%) contrast(99%)}body>main>header>div.header-nav nav{display:none}}body>main>header>div.fullscreen-nav{visibility:hidden;position:fixed;background-color:#063956;top:0;left:0;width:100%;height:0;overflow:hidden;opacity:0;transition:opacity .35s,visibility .35s,height .35s;z-index:999;text-align:left}body>main>header>div.fullscreen-nav.open{visibility:visible;opacity:1;height:100%}body>main>header>div.fullscreen-nav .nav-close-btn{-webkit-filter:invert(99%) sepia(3%) saturate(250%) hue-rotate(230deg) brightness(120%) contrast(100%);filter:invert(99%) sepia(3%) saturate(250%) hue-rotate(230deg) brightness(120%) contrast(100%);width:68px;height:68px;padding:20px;position:absolute;top:1.2em;right:1.2em;font-size:2em;font-style:light}body>main>header>div.fullscreen-nav>nav{height:100%}body>main>header>div.fullscreen-nav>nav>ul{width:80%;position:absolute;top:50%;left:40%;transform:translate(-40%,-50%);line-height:2.4em}body>main>header>div.fullscreen-nav>nav>ul>li{display:block}body>main>header>div.fullscreen-nav>nav>ul>li>a{font-size:2em;color:#fff;font-weight:400;font-style:normal}body>main>header>div.fullscreen-nav>nav>ul>li>a:hover{color:#e0e0e0}body>main>header>div.fullscreen-nav>nav>ul>li.active>a{color:#bdbdbd;font-style:italic}body>main>header>div.fullscreen-nav>nav>ul>li.active>a:hover{color:#bdbdbd}body>main>header>div.fullscreen-nav>nav>ul>li.special>a{color:#d9bd7e}body>main>header>div.fullscreen-nav>nav>ul>li.special>a:hover{color:#a8883c}body>main>header>div.fullscreen-nav>nav>ul>li.special.active>a{color:#a8883c;font-style:italic}body>main>header>div.fullscreen-nav>nav>ul>li.special.active>a:hover{color:#a8883c}html{height:100%}body{min-height:100%;position:relative}main{width:100%;position:relative;display:grid;padding-bottom:5em}@media(min-width:981px){main{grid-template-columns:[full-start] minmax(1em,1fr) [expansion-start] minmax(0,8em) [main-start] minmax(12em,600px) [main-end] minmax(0,8em) [expansion-end] minmax(1em,1fr) [full-end]}}@media(max-width:980px){main{grid-template-columns:[full-start] minmax(1em,1fr) [main-start] minmax(12em,600px) [main-end] minmax(1em,1fr) [full-end]}}main>figure{margin:0;display:inherit;grid-template-columns:inherit;grid-column:full;background-color:#111;color:#fff}main>figure>*{grid-column:main}main>*{padding:.7em;margin:0;grid-column:main}body{font-family:Charter,Merriweather,Lucida Bright,serif;font-size:14pt;line-height:1.35;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;text-rendering:optimizeLegibility}p{margin:.5em 0}a{transition-duration:.1s;transition-timing-function:ease-in-out;transition-property:color;font-family:Lora,Georgia,serif;font-style:italic;font-size:.95em;color:#4495c4;text-decoration:none}a:hover{color:#9dcbe6}a.big-link{font-size:24px;font-weight:700}a.header-anchor{color:#bdbdbd}a.header-anchor:hover{color:#e0e0e0}@media(min-width:981px){a.header-anchor{font-size:.8em;position:absolute;left:-1.1em;top:.2em}}blockquote{font-size:.95em;line-height:1.3;margin-left:2.5rem;font-style:italic}ol{list-style-type:decimal}ol>li>ol{list-style-type:lower-roman}ol>li>ol>li>ol{list-style-type:lower-latin}nav.table-of-contents>ol>li>a{font-style:normal;font-size:.95em}dl>dt{list-style:none;font-weight:700}dl>dd{margin-left:0;margin-bottom:1em}@media(max-width:980px){dl>dd,dl>dt{margin-left:40px}}dl.chevron>dt::before{content:"›";font-size:2em;margin-left:-35px;margin-top:-20px;position:absolute;padding:.1em .2em}dl.numbered{counter-reset:list-counter}dl.numbered>dt::before{content:counter(list-counter);counter-increment:list-counter;font-size:.8em;margin-left:-2.5em;margin-top:.17em;position:absolute;padding:.1em .5em;border:.1em solid;border-radius:1em}h1,h2,h3,h4,h5,h6{position:relative;margin-bottom:.5em;margin-top:.8em}h2{font-size:1.35em}h3{font-size:1.05em}table{border-spacing:.7em}table>thead{text-align:left}hr{width:100%;border:0;border-bottom:3px dotted #e0e0e0}mark{background-color:#ffed5a}.style-links a{font-family:Lora,Georgia,serif;font-size:.94em;font-variant:small-caps;letter-spacing:.1em;text-decoration:none;text-transform:lowercase}address{display:inline;font-style:inherit}select{padding:.2em 1em}.selector-code-block{display:none}article.main{display:inherit;grid-column:full;grid-template-columns:inherit;padding:0}article.main>*{grid-column:main}article.main>h1{font-size:1.6em;line-height:118%;margin:.4em;text-align:center}article.main>time.post-date{color:#828282;display:block;text-align:center}article.main>.full-width{background-color:#faf8f5;display:inherit;grid-column:full;grid-template-columns:inherit;margin:0;padding:1em 1em 0 1em;margin:1em 0;overflow:auto}article.main>.full-width.align-main>*{grid-column:main}article.main>.full-width>*{margin-bottom:1em}article.main .post-cover{margin:1em 0}article.main .post-cover>img{margin:0 auto}article.main .post-end-cta{background-color:#faf8f5;margin:1em 0;padding:1.2em}article.main .center-horizontal{margin:0 auto}article.main .post-cover{display:grid;grid-template-columns:inherit;grid-column:expansion;justify-content:center}article.main .post-cover>figcaption{grid-column:main;padding-top:1em}article.main .post-cover>img{grid-column:expansion}@media(max-width:980px){article.main .full-width-on-small-screens{grid-column:full!important}article.main .post-cover{grid-column:full}article.main .post-cover>img{grid-column:full}}@media(min-width:981px){article.main .expand-on-desktop{grid-column:expansion!important}article.main div.aside-wrapper{visibility:hidden;height:0;width:0;padding:0;margin:0;border:none}article.main div.aside-wrapper>aside{visibility:visible;background-color:#fff;padding:.5em;position:relative;left:calc(2.5rem * -4 - 1em);width:calc(2.5rem * 4)}}.post-list .post-summary{margin:1.4em 0}.post-list .post-summary h3{margin:10px 0}.post-list .post-summary h3>a{color:#000;font-family:Lora,Georgia,serif;font-size:1.25em;font-style:normal;font-weight:700}.post-list .post-summary img{border-radius:.2em;border-color:#4f4f4f;max-height:200px;-o-object-fit:cover;object-fit:cover;width:100%}.post-list .post-summary .description{margin:11px 0}.post-list .post-summary .tags>a{transition-duration:.1s;transition-timing-function:ease-in-out;background-color:#f2f2f2;border-radius:1em;color:#4f4f4f;display:inline-block;font-size:12px;margin-bottom:5px;margin-right:7px;padding:4px 11px;text-decoration:none;transition-property:background-color}.post-list .post-summary .tags>a:hover{background-color:#e0e0e0}.landing-hero{margin-bottom:1em}.landing-hero p.hero-subtitle{font-family:Lora,Georgia,serif;font-style:italic;font-weight:700;margin-bottom:5px}.landing-hero p.hero-description{font-size:32px;margin:25px 0}@media(min-width:981px){.landing-hero{grid-column:main}}.index-summaries{display:flex;gap:40px;flex-wrap:wrap}@media(min-width:981px){.index-summaries{grid-column:main}}.index-summaries>div{flex-grow:1;flex-basis:300px}.index-summaries>div>h2{font-size:2em;font-family:Yeseva One,Lora,Georgia,serif;font-weight:400;margin-bottom:0}body{background-color:#fff}figure img{max-width:100%}figure>figcaption{color:#828282}figure.center-contents>*{margin:0 auto}.youtube-embed{position:relative;width:100%;padding-top:56.25%}.youtube-embed>iframe{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}</style>
+
+  <script src="/js/nav-overlay.js"></script>
+
+  <!-- IE < 10 -->
+  <!--[if IE]>
+  <script type="text/javascript">
+      window.location = "/upgrade-browser";
+  </script>
+  <![endif]-->
+
+  <!-- IE >= 10 -->
+  <script type="text/javascript">
+      if (window.navigator.msPointerEnabled) {
+          window.location = "/upgrade-browser";
+      }
+  </script>
+  
+  <script data-goatcounter="https://pseigo.goatcounter.com/count" async src="https://gc.zgo.at/count.js">
+  </script>
+</head>
+
+<body>
+<main><header>
+  <span>
+    <h1>Peyton Seigo</h1>
+  </span>
+  <div class="header-nav">
+    <img onclick="toggleNavOverlay()" src="/images/icons/menu.svg" onerror="this.src='/images/icons/menu.png'; this.onerror = null;" class="nav-open-btn" alt="Menu"><nav role="navigation" class="website-nav">
+  <ul><li class=" ">
+      <a href="/">Home</a>
+    </li><li class=" ">
+      <a href="/projects/">Projects</a>
+    </li><li class=" ">
+      <a href="/about/">About</a>
+    </li><li class=" special">
+      <a href="/contact/">Get in Touch</a>
+    </li></ul>
+</nav>
+</div>
+  <div class="fullscreen-nav"><nav role="navigation" class="website-nav">
+  <ul><li class=" ">
+      <a href="/">Home</a>
+    </li><li class=" ">
+      <a href="/projects/">Projects</a>
+    </li><li class=" ">
+      <a href="/about/">About</a>
+    </li><li class=" special">
+      <a href="/contact/">Get in Touch</a>
+    </li></ul>
+</nav>
+<img onclick="toggleNavOverlay()" src="/images/icons/close.svg" onerror="this.src='/images/icons/close.png'; this.onerror = null;" class="nav-close-btn" alt="Close">
+  </div>
+</header>
+
+<article class="main">
+  <h1>Arduino Study Timer</h1><time class="post-date" datetime="6/3/2020">
+    Wednesday, June 3, <span class="small-caps">2020
+</span>  </time><figure class="post-cover">
+      <img src="/images/projects/arduino-study-timer/cover.jpg" alt="An Arduino Mega 2560 wired up for some study sessions. It&#39;s not a bomb, I promise."><figcaption>An Arduino Mega 2560 wired up for some study ses­sions. It’s not a bomb, I promise.</figcaption></figure><p>I built a study timer for the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a>, a method for time­box­ing work in short, in­di­vis­i­ble in­ter­vals of time. This was com­pleted as an op­tional, self-di­rected ﬁ­nal pro­ject for my twelfth-grade com­puter sci­ence course.</p>
+<p>The hard­ware and soft­ware tools I used in­clude:</p>
+<ul>
+<li>An <a href="https://store.arduino.cc/usa/mega-2560-r3">Arduino Mega 2560</a> with a seven-seg­ment dis­play, some LEDs, push but­tons, a piezo­elec­tric buzzer, and a whole lot of wires.</li>
+<li>C++, the <a href="https://platformio.org/">PlatformIO <span class="small-caps">IDE</span></a>, and the stan­dard Arduino li­braries.</li>
+<li><a href="https://www.youtube.com/user/Uryens108">SevSeg</a> to drive the seven-seg­ment <span class="small-caps">LCD</span> dis­play.</li>
+<li><a href="https://platformio.org/lib/show/131/TimerOne">TimerOne</a> for pe­ri­odic hard­ware in­ter­rupts to get pre­cise timer ticks.</li>
+</ul>
+<p>The <a href="https://github.com/pseigo/arduino-pomodoro">source code</a> is avail­able on GitHub. I slightly al­tered the snip­pets in this ar­ti­cle for em­pha­sis and clar­ity.</p>
+<nav class="table-of-contents"><ol><li><a href="#demo"> Demo</a></li><li><a href="#motivation"> Motivation</a></li><li><a href="#project-goals"> Project goals</a></li><li><a href="#key-results-and-metrics"> Key re­sults and met­rics</a></li><li><a href="#implementation-and-learnings"> Implementation and learn­ings</a><ol><li><a href="#the-hardware"> The hard­ware</a></li><li><a href="#state-machine-logic-and-rookie-mistakes"> State ma­chine logic and rookie mis­takes</a></li><li><a href="#switch-bounce"> Switch bounce</a></li><li><a href="#accurate-timer-ticks-with-cpu-interrupts"> Accurate timer ticks with <span class="small-caps">CPU</span> in­ter­rupts</a></li></ol></li><li><a href="#bug-squashing"> Bug squash­ing</a><ol><li><a href="#sometimes-the-timer-stopped-ticking"> Sometimes the timer stopped tick­ing</a></li><li><a href="#time-on-display-did-not-update-when-entering-work-mode"> Time on dis­play did not up­date when en­ter­ing work mode</a></li><li><a href="#indicator-led-sometimes-flickered-when-timer-was-manually-paused"> Indicator <span class="small-caps">LED</span> some­times ﬂick­ered when timer was man­u­ally paused</a></li></ol></li><li><a href="#what-i-would-do-differently"> What I would do dif­fer­ently</a></li></ol></nav><h2 id="demo"><a class="header-anchor" href="#demo">§</a> Demo</h2>
+<div class="youtube-embed expand-on-desktop full-width-on-small-screens">
+  <iframe src="https://www.youtube-nocookie.com/embed/Qk93Z4uxi0s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<h2 id="motivation"><a class="header-anchor" href="#motivation">§</a> Motivation</h2>
+<p>My High School of­fered com­puter sci­ence courses — taught by <a href="https://www.youtube.com/user/Uryens108">James Chow</a>, a won­der­ful ed­u­ca­tor and role model — fo­cused on im­per­a­tive pro­gram­ming in C++ and Java and un­der­stand­ing al­go­rithms. Namely, we stud­ied al­go­rithms like merge­sort and quick­sort, a re­cur­sive <a href="https://en.wikipedia.org/wiki/Knight%27s_tour">knight’s tour</a> sim­u­la­tion, and a su­doku solver.</p>
+<p>These courses were the ﬁrst time I re­ally grasped pro­gram­ming and the Arduino Study Timer was my ﬁrst ex­pe­ri­ence with de­sign­ing and build­ing some­thing size­able from start to ﬁn­ish.</p>
+<p>I built the study timer for my twelfth-grade course’s ﬁ­nal pro­ject. We were free to pur­sue any­thing re­lated to the course ma­te­r­ial. I had a rough idea of what Arduinos were and their ca­pa­bil­i­ties, but I had no ex­pe­ri­ence with them.</p>
+<p>I was never very in­ter­ested in school or tech­ni­cal sub­jects un­til the end of grade 10. At that point I be­came very in­ter­ested in self-learn­ing and the<span class="push-double"></span> <span class="pull-double">“</span>productivity” trend.</p>
+<p>I learned about the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a>, a method for time-box­ing work in short, in­di­vis­i­ble in­ter­vals of time. I had been us­ing this study method with a mo­bile app, but the point was to stay fo­cused, and keep­ing my phone out was very tempt­ing and dis­tract­ing. It is hard to break habits that have been prac­ticed since child­hood. I thought it would be nice to have a ded­i­cated study timer free from dig­i­tal dis­trac­tions.</p>
+<p>Going into the pro­ject, I knew next to noth­ing about elec­tron­ics, cir­cuits, or em­bed­ded pro­gram­ming. I ﬁn­ished the im­ple­men­ta­tion in three days and learned a ton along the way. I’d like to re­ﬂect a bit on my process and how I tack­led the pro­jec­t’s main chal­lenges.</p>
+<h2 id="project-goals"><a class="header-anchor" href="#project-goals">§</a> Project goals</h2>
+<p>I came up with a few sim­ple goals to judge the pro­jec­t’s suc­cess.</p>
+<ol>
+<li>The timer should be easy to con­trol and con­ﬁg­ure.</li>
+<li>The<span class="push-double"></span> <span class="pull-double">“</span>work” and<span class="push-double"></span> <span class="pull-double">“</span>break” states should be eas­ily iden­ti­ﬁ­able and au­to­mat­i­cally al­ter­nate.</li>
+<li>The timer should track time ac­cu­rately.</li>
+</ol>
+<p>From a stu­den­t’s per­spec­tive, the only real re­quire­ment was to ﬁn­ish the pro­ject be­fore the dead­line. Given the fact that I had no idea what I was get­ting into, I would have been happy to com­plete the pro­ject with some­thing us­able.</p>
+<p>I was very happy with the ﬁ­nal prod­uct and I learned valu­able elec­tron­ics skills.</p>
+<h2 id="key-results-and-metrics"><a class="header-anchor" href="#key-results-and-metrics">§</a> Key re­sults and met­rics</h2>
+<p>I wired up the cir­cuit, wrote the code, tested for<span class="push-double"></span> <span class="pull-double">“</span>release,” and ﬁxed all ma­jor bugs in three days. This was pri­mar­ily a<span class="push-single"></span> <span class="pull-single">‘</span>learning pro­ject’ so the out­comes mainly in­volve the skills I learned. To list a few, I:</p>
+<ul>
+<li>Used is­sues/​tick­ets for the ﬁrst time with GitHub is­sues to doc­u­ment bugs as I dis­cov­ered them.</li>
+<li>Interpreted a data sheet for the seven-seg­ment dis­play.
+<ul>
+<li>Wired each seg­ment to a dig­i­tal pin on the Arduino board.</li>
+<li>I had a com­mon cath­ode dis­play, so for each digit, an in­put was set high for each il­lu­mi­nated seg­ment, and a com­mon out­put re­spec­tive to the digit would be set low. This hap­pened many times per sec­ond for each digit&thinsp;&mdash;&thinsp;fast enough that these in­ter­mit­tent up­dates would <a href="https://en.wikipedia.org/wiki/Flicker_fusion_threshold">ap­pear com­pletely steady to a hu­man ob­server</a>. The <a href="https://www.youtube.com/user/Uryens108">SevSeg</a> li­brary ab­stracted this logic away.</li>
+</ul>
+</li>
+<li>Learned how to use a mul­ti­me­ter to test con­nec­tions be­tween com­po­nent pins and sol­der in­tegrity.</li>
+<li>Learned some cir­cuits fun­da­men­tals:
+<ul>
+<li>Visualizing cur­rent ﬂow.</li>
+<li>Limiting cur­rent to LEDs with re­sis­tors in se­ries.</li>
+<li>Using pulse-width mod­u­la­tion to sim­u­late <span class="small-caps">LED</span> dim­ming.</li>
+<li>Debouncing switches with ca­pac­i­tors (although I chose to solve this in soft­ware).</li>
+<li>Using com­po­nents such as LEDs, seven-seg­ment dis­plays, piezo­elec­tric buzzers, and tran­sis­tors. I got enough prac­tice to be able to pull any­thing else from the elec­tron­ics starter kit.</li>
+</ul>
+</li>
+<li>Had my ﬁrst ex­po­sure to, and ap­pli­ca­tion of, some com­puter sci­ence con­cepts:
+<ul>
+<li>Boolean logic and sim­pli­fy­ing ex­pres­sions.</li>
+<li>Implementing logic as a state ma­chine as op­posed to the highly se­quen­tial, block­ing code that new pro­gram­mers learn to write.</li>
+</ul>
+</li>
+<li>Practiced a bare-bones soft­ware de­vel­op­ment life cy­cle, in­clud­ing:
+<ul>
+<li>Proof of con­cept and de­sign.</li>
+<li>Hardware and soft­ware pro­to­types.</li>
+<li>Implementation and test­ing.</li>
+<li>Documenting and ﬁx­ing bugs.</li>
+<li>Finalizing and pol­ish­ing (the last 80% of ef­fort).</li>
+</ul>
+</li>
+</ul>
+<h2 id="implementation-and-learnings"><a class="header-anchor" href="#implementation-and-learnings">§</a> Implementation and learn­ings</h2>
+<h3 id="the-hardware"><a class="header-anchor" href="#the-hardware">§</a> The hard­ware</h3>
+<p>This is what it looks like all wired up.</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/arduino-study-timer/hardware.jpg" alt="The Arduino board hooked up to a seven-segment display, some push buttons, LEDS, and a piezoelectric buzzer.">
+    <figcaption>The Arduino board hooked up to a seven-seg­ment dis­play, some push but­tons, <span class="small-caps">LEDS</span>, and a piezo­elec­tric buzzer.</figcaption>
+  </div>
+</figure>
+<h3 id="state-machine-logic-and-rookie-mistakes"><a class="header-anchor" href="#state-machine-logic-and-rookie-mistakes">§</a> State ma­chine logic and rookie mis­takes</h3>
+<p>Arduino pro­grams typ­i­cally have two main func­tions: <code>setup()</code> and <code>loop()</code>.</p>
+<ul>
+<li><code>setup()</code> runs once at the start of the pro­gram or when the Arduino turns on.</li>
+<li><code>loop()</code> runs over and over, up to thou­sands of times a sec­ond, un­til the pro­gram ends or the Arduino turns off.</li>
+</ul>
+<p>All of the pro­gram’s logic orig­i­nates from the <code>loop()</code>.</p>
+<p>In ret­ro­spect, I’ve no­ticed when en­gi­neer­ing and com­puter sci­ence stu­dents ﬁrst write pro­grams for mi­cro­con­trollers, they tend to space out tasks with <code>delay</code>s and <code>sleep</code>s or pile lots of in­struc­tions in each loop cy­cle. The prob­lem is that this tends to block the thread of ex­e­cu­tion for a long time (relatively speak­ing), pre­vent­ing other work from be­ing done. To be clear, I think these habits are a fail­ure of on­line tu­to­ri­als, not the stu­dents them­selves.</p>
+<p>Let’s see an ex­am­ple of how this might hap­pen:</p>
+<figure class="full-width align-main"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">do_something_intensive</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> <span class="token keyword">unsigned</span> iterations <span class="token operator">=</span> <span class="token number">1000000</span><span class="token punctuation">;</span><br>  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">unsigned</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">!=</span> iterations<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">/* ... */</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">void</span> <span class="token function">sense_objects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><br><br><span class="token comment">// Runs over and over, up to thousands of times per second.</span><br><span class="token keyword">int</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token function">do_something_intensive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Problem (1).</span><br>  <span class="token function">sense_objects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Problem (2).</span><br><span class="token punctuation">}</span></code></pre></figure>
+<p>There are two prob­lems here:</p>
+<ol>
+<li>Because <code>do_something_intensive()</code> might take a long time, <code>sense_objects()</code> might sense ob­jects too late or miss them en­tirely.</li>
+<li>At the end of each <code>loop()</code> ex­e­cu­tion, we tell the proces­sor to take a leisurely one sec­ond nap. This is time we could have used for some­thing else.</li>
+</ol>
+<p>For triv­ial pro­grams like blink­ing an <span class="small-caps">LED</span>, this is per­fectly ﬁne. However, when one wants to start do­ing mul­ti­ple things at once, she will likely have a hard time keep­ing things syn­chro­nized and mak­ing sure not to miss im­por­tant events (e.g., from ob­ject de­tec­tion sen­sors on a self-dri­ving ro­bot).</p>
+<p>Since an im­por­tant goal of this pro­ject was to do mul­ti­ple things at once&thinsp;&mdash;&thinsp;main­tain sta­tus LEDs, a timer, and gen­er­ate tick­ing sounds&thinsp;&mdash;&thinsp;the triv­ial ap­proach was­n’t go­ing to work for me.</p>
+<p>Instead, I ab­stracted the logic into dis­tinct states in a <a href="https://simple.wikipedia.org/wiki/Automaton">state ma­chine</a> and en­sured each pass through <code>loop()</code> was as short as pos­si­ble.</p>
+<div class="aside-wrapper"><aside>
+At the time, I nick­named this idea<span class="push-single"></span> <span class="pull-single">‘</span>enum-based state.’ I had no idea this was a <a href="https://en.wikipedia.org/wiki/Finite-state_machine">well-de­ﬁned topic</a> in com­puter sci­ence. I would­n’t know the true pain and beauty of <a href="https://web.archive.org/web/20190429231612/https://courses.students.ubc.ca/cs/courseschedule?pname=subjarea&tname=subj-course&dept=CPSC&course=121">for­mal logic</a> un­til my ﬁrst year of uni­ver­sity.
+</aside></div>
+<p>The di­a­grams be­low rep­re­sent how <a href="https://github.com/pseigo/arduino-pomodoro">the code</a> moves from one state to the next as the user com­pletes work pe­ri­ods.</p>
+<figure class="full-width align-main">
+  <img src="/images/projects/arduino-study-timer/fsm.svg" alt="Diagram of a state machine that represents the Pomodoro timer.">
+  <figcaption>The pro­gram as a state ma­chine. Note that the user can pause from any state and un­pause to get back to where they were. This re­quires the pro­gram to re­mem­ber where it was last. I left those tran­si­tions out to avoid clut­ter­ing the di­a­gram.</figcaption>
+</figure>
+<h3 id="switch-bounce"><a class="header-anchor" href="#switch-bounce">§</a> Switch bounce</h3>
+<p>Another prob­lem I faced was switch bounce with my push but­tons. When me­chan­i­cal but­tons and switches are ac­ti­vated, two pieces of metal come to­gether, bridg­ing a gap be­tween two parts of the cir­cuit.</p>
+<p>If you watch the sig­nal on the neg­a­tive side of the but­ton, you might ex­pect to see a low sig­nal (i.e., off or <code>false</code>) be­fore the push and a high sig­nal (i.e., on or <code>true</code>) af­ter the push. That would make sense. However, let’s take a closer look at what hap­pens in be­tween, <em>while</em> the but­ton is be­ing pressed.</p>
+<p>What tends to hap­pen is the met­als<span class="push-double"></span> <span class="pull-double">“</span>bounce” off each other due to their elas­tic­ity. Current ﬂows for a mo­ment, then the met­als sep­a­rate and the cur­rent is cut off. This can hap­pen dozens of times in a mil­lisec­ond.</p>
+<p>The <a href="https://store.arduino.cc/usa/mega-2560-r3">Arduino Mega 2560</a> has a <a href="https://web.archive.org/web/20200605040144/http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega640-1280-1281-2560-2561-Datasheet-DS40002211A.pdf">sin­gle-cy­cle <span class="small-caps">MIPS</span> <span class="small-caps">CPU</span></a> and runs at up to 16 mil­lion cy­cles per sec­ond (16 MHz). That means that best case, this thing only takes about 63 nanosec­onds per in­struc­tion. That’s up to 6,000 in­struc­tions in the time the switch bounces back and forth.</p>
+<p>In other words, the Arduino has no prob­lem de­tect­ing that os­cil­lat­ing sig­nal while the but­ton is pressed.</p>
+<p>I tested two so­lu­tions:</p>
+<ol>
+<li><strong>In hard­ware.</strong><br>On the neg­a­tive side of the but­ton, I put a ca­pac­i­tor that charges while the but­ton is pressed.</li>
+<li><strong>In soft­ware.</strong><br>When the code sees a high sig­nal, it re­mem­bers that and ig­nores any change for a short time.</li>
+</ol>
+<p>I did­n’t choose the hard­ware so­lu­tion. If I can re­call, some rea­sons were:</p>
+<ul>
+<li>It did­n’t com­pletely elim­i­nate the bounce. Perhaps I should have used a ca­pac­i­tor with more charge.</li>
+<li>I did­n’t have the physics back­ground to un­der­stand what was hap­pen­ing and to tune it to a bet­ter so­lu­tion.</li>
+</ul>
+<p>I went with the soft­ware so­lu­tion be­cause it was easy to im­ple­ment and ﬁx the switch bounce prob­lem.</p>
+<h3 id="accurate-timer-ticks-with-cpu-interrupts"><a class="header-anchor" href="#accurate-timer-ticks-with-cpu-interrupts">§</a> Accurate timer ticks with <span class="small-caps">CPU</span> in­ter­rupts</h3>
+<figure>
+  <img src="/images/projects/arduino-study-timer/bugs-bunny-hook.png" alt="Bugs Bunny being pulled offstage by the Vaudeville hook.">
+  <figcaption>When the <span class="small-caps">CPU</span> re­ceives an in­ter­rupt, it drops what its do­ing to run an in­ter­rupt han­dler.</figcaption>
+</figure>
+<p>I used the <a href="https://platformio.org/lib/show/131/TimerOne">TimerOne</a> li­brary to send an <em>in­ter­rupt</em> every one sec­ond to the <span class="small-caps">CPU</span>. When in­ter­rupted, it stops what its do­ing to run <code>tick()</code>. Technically, we call this func­tion an <em>Interrupt Service Routine</em> (<span class="small-caps">ISR</span>).</p>
+<figure class="full-width align-main"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// setup.cpp</span><br><span class="token keyword">void</span> <span class="token function">setup_timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    Timer1<span class="token punctuation">.</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Defaults to interrupt the CPU every 1 second.</span><br>    Timer1<span class="token punctuation">.</span><span class="token function">attachInterrupt</span><span class="token punctuation">(</span>tick<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">// loop.cpp</span><br><span class="token comment">// This Interrupt Service Routine runs every 1 second.</span><br><span class="token keyword">void</span> <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token comment">// ...</span><br><br>    <span class="token keyword">const</span> <span class="token keyword">bool</span> has_time_left <span class="token operator">=</span> timer<span class="token punctuation">.</span><span class="token function">current_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>has_time_left<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        timer<span class="token punctuation">.</span><span class="token function">tick_down</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>        <span class="token comment">// Set flag to avoid intensive tasks in interrupt.</span><br>        advance_to_next_state <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token comment">// ...</span><br><span class="token punctuation">}</span></code></pre></figure>
+<div class="aside-wrapper"><aside>Nick Gammon has a de­tailed ar­ti­cle on <a href="http://gammon.com.au/interrupts"><span class="small-caps">CPU</span> in­ter­rupts</a> if you want to learn more.</aside></div>
+<p>Using <span class="small-caps">CPU</span> in­ter­rupts en­sures we get ac­cu­rate timer ticks, re­gard­less of what state the pro­gram is in.</p>
+<p>In the code above, I check if the timer has any time life. If the time reamin­ing is greater than zero, I decre­ment one sec­ond. Otherwise, if the timer is up, I ﬂag <code>advance_to_next_state</code> to del­e­gate any in­ten­sive state-switch­ing-tasks some­where other than the <span class="small-caps">ISR</span>.</p>
+<p>This is the only time-re­lated code that uses in­ter­rupts. For time-re­lated tasks that did­n’t need com­plete ac­cu­racy, I saved a start­ing time and cal­cu­lated the dif­fer­ence on each <code>loop()</code> cy­cle.</p>
+<h2 id="bug-squashing"><a class="header-anchor" href="#bug-squashing">§</a> Bug squash­ing</h2>
+<p>The most chal­leng­ing part of this pro­ject was ﬁx­ing bugs near the end of the pro­ject. While my de­bug­ging tool­belt has ex­panded much over the years, I ﬁnd that schools don’t fo­cus on this skill as much as they should (assuming it is pos­si­ble to teach <em>some</em> de­bug­ging skills in the class­room).</p>
+<h3 id="sometimes-the-timer-stopped-ticking"><a class="header-anchor" href="#sometimes-the-timer-stopped-ticking">§</a> Sometimes the timer stopped tick­ing</h3>
+<blockquote>
+<p>When press­ing ei­ther but­ton for &gt; 500 ms, the hard­ware clock is stopped. This is a re­sult of old test­ing code which should be re­moved.</p>
+<p>– <a href="https://github.com/pseigo/arduino-pomodoro/issues/12">Issue #12</a></p>
+</blockquote>
+<p>I im­ple­mented short and long but­ton presses, but did­n’t end up us­ing the long press for any­thing. I left some test­ing code in that logic which caused the bug.</p>
+<figure class="full-width align-main"><pre class="language-diff"><code class="language-diff">src/main.cpp<br>@@ -145,9 +145,9 @@ void debounced_press(int pin, int&amp; pressed, unsigned long&amp; pressed_time, unsigne<br><span class="token unchanged">                tick();<br>            }<br>        } else if (pressed_duration >= 500 &amp;&amp; pressed_duration &lt; 1000) {<br></span><span class="token inserted-sign inserted">+           // medium press<br></span><span class="token deleted-sign deleted">-           Timer1.stop();<br></span><span class="token unchanged">        } else {<br></span><span class="token inserted-sign inserted">+           // long press<br></span><span class="token deleted-sign deleted">-           Timer1.stop();<br></span><span class="token unchanged">        }<br>        pressed_time = 0;<br>    }</span></code></pre></figure>
+<p>This type of prob­lem can be avoided with dis­ci­plined de­vel­op­ment processes, e.g., us­ing git ﬂow or sim­i­lar sys­tems that doc­u­ment and con­ﬁne each change in its own branch. I did­n’t know any­thing about that at the time. However, it <em>does</em> seem that many de­vel­op­ers re­sist process in per­sonal pro­jects as it can feel overly pedan­tic. With that said, it is cer­tain that process shows its ben­e­ﬁts more in teams.</p>
+<h3 id="time-on-display-did-not-update-when-entering-work-mode"><a class="header-anchor" href="#time-on-display-did-not-update-when-entering-work-mode">§</a> Time on dis­play did not up­date when en­ter­ing work mode</h3>
+<blockquote>
+<p><a href="https://github.com/pseigo/arduino-pomodoro/commit/2581a749e3262eb3ba685d27968b87bf437f85db"><code>2581a74</code></a> (requested by <a href="https://github.com/pseigo/arduino-pomodoro/issues/6">#6</a>) adds a fea­ture to pause the timer when en­ter­ing work mode. However, when en­ter­ing the work state (followed by a pause), the timer dis­plays 0.00 in­stead of the time of the new work pe­riod as ex­pected.</p>
+<p>ie. it should dis­play 25.00 (or what­ever the work pe­riod is set to) and be paused.</p>
+<p>– <a href="https://github.com/pseigo/arduino-pomodoro/issues/13">Issue #13</a></p>
+</blockquote>
+<p>The ﬁx was sim­i­lar to what’s shown be­low:</p>
+<figure class="full-width align-main"><pre class="language-diff"><code class="language-diff">void tick()<br>{<br><span class="token unchanged">    // ...<br></span><br><span class="token unchanged">    const float time = timer.current_time();<br>    const bool time_is_up = time > 0;<br>    if (time_is_up) {<br>        to_next_state();<br></span><span class="token deleted-sign deleted">-   }<br></span><span class="token inserted-sign inserted">+   } else {<br>+       timer.tick_down();<br>+   }<br></span><br><span class="token deleted-sign deleted">-    timer.tick_down();<br></span><br><span class="token unchanged">    // Update display.<br></span><span class="token inserted-sign inserted">+   sevseg.setNumber(timer.current_time(), 2);<br></span><span class="token deleted-sign deleted">-   sevseg.setNumber(time, 2);<br></span>}</code></pre></figure>
+<p>The prob­lem is I was us­ing a stale <code>time</code> value which was <code>&lt;= 0</code>. <code>to_next_state()</code> would ad­vance the state and set the timer to its new du­ra­tion. This is some­thing I refac­tored even fur­ther later on.</p>
+<p>A prob­lem like this de­mands at­ten­tion to de­tail and thor­ough test­ing (manual or au­to­mated).</p>
+<h3 id="indicator-led-sometimes-flickered-when-timer-was-manually-paused"><a class="header-anchor" href="#indicator-led-sometimes-flickered-when-timer-was-manually-paused">§</a> Indicator <span class="small-caps">LED</span> some­times ﬂick­ered when timer was man­u­ally paused</h3>
+<blockquote>
+<p>Sometimes the in­di­ca­tor <span class="small-caps">RGB</span> <span class="small-caps">LED</span> will ﬂicker spas­mod­i­cally for be­tween 0 and ~3 sec­onds The spe­ciﬁc cause is un­known, but al­ways seems to be when en­ter­ing the pause state with but­ton 2.</p>
+<p>This bug likely has some­thing to do with the im­ple­men­ta­tion of <a href="https://github.com/pseigo/arduino-pomodoro/commit/a8721926bbc972492eadafe6b247b35942881f3b"><code>a872192</code></a>.</p>
+<p>– <a href="https://github.com/pseigo/arduino-pomodoro/issues/14">Issue #14</a></p>
+</blockquote>
+<p>I ﬁxed this by set­ting a ﬂag to change states rather than chang­ing states in the <span class="small-caps">ISR</span>.</p>
+<figure class="full-width align-main"><pre class="language-diff"><code class="language-diff">if (timer.current_time() &lt;= 0) {<br><span class="token inserted-sign inserted">+   next_state_pending = true;<br></span><span class="token deleted-sign deleted">-   to_next_state();<br></span>} else {<br><span class="token unchanged">    timer.tick(); // decrement time<br></span>}</code></pre></figure>
+<p>In hind­sight, this may have been the re­sult of com­piler op­ti­miza­tions since I did­n’t set any global vari­ables to <code>volatile</code> and <code>to_next_state()</code> was fairly com­plex, touch­ing many parts of the sys­tem. Alas.</p>
+<h2 id="what-i-would-do-differently"><a class="header-anchor" href="#what-i-would-do-differently">§</a> What I would do dif­fer­ently</h2>
+<p>Things that might be fun to do the next time around with an Ardino pro­ject:</p>
+<ul>
+<li>Model and <span class="small-caps">3D</span> print a hous­ing for the Arduino and its com­po­nents.</li>
+<li>Solder the com­po­nents onto a proper <span class="small-caps">PCB</span> (you can or­der these on­line) or a perf board.</li>
+<li>Utilize more of C++. My knowl­edge was quite nar­row at the time.</li>
+<li>Read up on the <span class="small-caps">CPU</span><span class="push-single"></span><span class="pull-single">’</span>s low-level work­ings and jus­tify code choices with this un­der­stand­ing.</li>
+<li>Read some books or blog posts on best prac­tices for em­bed­ded soft­ware.</li>
+</ul>
+<p>When I wrote the pro­ject pro­posal, I noted a nice-to-have fea­ture to track ses­sion his­tory&thinsp;&mdash;&thinsp;date and time, to­tal time spent work­ing, com­pleted vs. failed work pe­ri­ods, and break lengths&thinsp;&mdash;&thinsp;and pre­sent the data nicely on a lo­cally hosted web page. This would have been far out of my com­fort zone but I would def­i­nitely con­sider do­ing some­thing like that next time.</p>
+<p>I learned a lot and look for­ward to my next Arduino pro­ject.</p>
+
+
+  <hr style="margin-top: 1.2em;"><p>
+      <em>Continue the dis­cus­sion <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet/?text=&ldquo;Arduino Study Timer&rdquo;&url=https://peytonseigo.ca/arduino-study-timer/&via=peytonseigo">on Twitter</a>!</em>
+    </p><div class="post-end-cta">
+      <b>I am avail­able for soft­ware in­tern­ships from April to December of 2022</b> (4 or 8 month place­ments). Take a look at some of the <a href="/projects">pro­jects I’ve done</a> or my <a href="https://github.com/pseigo/">GitHub pro­ﬁle</a>. If your team is look­ing for a com­puter sci­ence stu­dent, please feel free to <a href="/contact">get in touch</a>!
+    </div></article>
+
+</main>
+</body>
+</html>

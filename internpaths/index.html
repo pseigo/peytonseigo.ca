@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Internpaths - Job Search App Prototype - Peyton Seigo</title>
+
+  <meta name="author" content="Peyton Seigo">
+  <meta name="description" content="Prototype for a proximity-based job posting aggregator.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2577a6">
+
+  <!--
+   _          _ _       _
+  | |        | | |     | |
+  | |__   ___| | | ___ | |
+  | '_ \ / _ \ | |/ _ \| |
+  | | | |  __/ | | (_) |_|
+  |_| |_|\___|_|_|\___/(_)
+
+  While you're here, I thought I'd let you know that
+  I am available for software internships from April
+  to December of 2022. If your team is looking for a
+  computer science student, please feel free to get
+  in touch!
+
+  Otherwise, if you're just curious what makes this
+  site tick or have any other questions, feel free
+  to reach out! I'd love to hear from you.
+
+  https://peytonseigo.ca/contact
+
+  -->
+  
+  <meta property="og:site_name" content="Peyton Seigo">
+  <meta property="og:url" content="https://peytonseigo.ca/internpaths/">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:site" content="@peytonseigo">
+  <meta name="twitter:creator" content="@peytonseigo">
+
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+
+  <meta property="og:title" content="Internpaths - Job Search App Prototype">
+  <meta name="twitter:title" content="Internpaths - Job Search App Prototype">
+  <meta property="og:description" content="Prototype for a proximity-based job posting aggregator.">
+  <meta name="twitter:description" content="Prototype for a proximity-based job posting aggregator.">
+  <meta property="og:image" content="https://peytonseigo.ca/images/projects/internpaths/cover.jpg">
+  <meta name="twitter:image" content="https://peytonseigo.ca/images/projects/internpaths/cover.jpg">
+  <meta property="og:image:alt" content="Internpath&#39;s map view on the job dashboard.">
+  <meta name="twitter:image:alt" content="Internpath&#39;s map view on the job dashboard.">
+
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="180x180" href="https://peytonseigo.ca/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://peytonseigo.ca/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" sizes="16x16" href="https://peytonseigo.ca/favicon-16x16.png">
+  <link rel="manifest" href="https://peytonseigo.ca/site.webmanifest">
+
+  <link rel="stylesheet" href="/css/prism-duotone-light.css"><style>/*! modern-normalize v0.6.0 | MIT License | https://github.com/sindresorhus/modern-normalize */*,::after,::before{box-sizing:border-box}:root{-moz-tab-size:4;-o-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"}hr{height:0}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{padding:0}progress{vertical-align:baseline}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}@font-face{font-family:Charter;src:url(/fonts/charter_regular-webfont.eot);src:url(/fonts/charter_regular-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_bold-webfont.eot);src:url(/fonts/charter_bold-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_bold-webfont.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_italic-webfont.eot);src:url(/fonts/charter_italic-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_italic-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_bold_italic-webfont.eot);src:url(/fonts/charter_bold_italic-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_bold_italic-webfont.woff) format("woff");font-weight:700;font-style:italic;font-display:swap}@font-face{font-family:Lora;src:url(/fonts/lora-variablefont_wght-webfont.woff2) format("woff2"),url(/fonts/lora-variablefont_wght-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Lora;src:url(/fonts/lora-italic-variablefont_wght-webfont.woff2) format("woff2"),url(/fonts/lora-italic-variablefont_wght-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-light-webfont.woff2) format("woff2"),url(/fonts/merriweather-light-webfont.woff) format("woff");font-weight:300;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-lightitalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-lightitalic-webfont.woff) format("woff");font-weight:300;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-regular-webfont.woff2) format("woff2"),url(/fonts/merriweather-regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-italic-webfont.woff2) format("woff2"),url(/fonts/merriweather-italic-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-bold-webfont.woff2) format("woff2"),url(/fonts/merriweather-bold-webfont.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-bolditalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-bolditalic-webfont.woff) format("woff");font-weight:700;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-black-webfont.woff2) format("woff2"),url(/fonts/merriweather-black-webfont.woff) format("woff");font-weight:900;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-blackitalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-blackitalic-webfont.woff) format("woff");font-weight:900;font-style:italic;font-display:swap}@font-face{font-family:"Yeseva One";src:url(/fonts/yesevaone-regular-webfont.woff2) format("woff2"),url(/fonts/yesevaone-regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Light.woff2) format("woff2"),url(/fonts/FiraCode-Light.woff) format("woff");font-weight:300;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Regular.woff2) format("woff2"),url(/fonts/FiraCode-Regular.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Medium.woff2) format("woff2"),url(/fonts/FiraCode-Medium.woff) format("woff");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-SemiBold.woff2) format("woff2"),url(/fonts/FiraCode-SemiBold.woff) format("woff");font-weight:600;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Bold.woff2) format("woff2"),url(/fonts/FiraCode-Bold.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code VF";src:url(/fonts/FiraCode-VF.woff2) format("woff2-variations"),url(/fonts/FiraCode-VF.woff) format("woff-variations");font-weight:300 700;font-style:normal;font-display:swap}footer{color:#828282;font-size:.75em;font-style:italic;letter-spacing:.075em;padding:1em;position:absolute;bottom:0;left:0;right:0;text-align:center}nav.website-nav ul{list-style:none;margin:0 auto}nav.website-nav li{display:inline;margin:10px}nav.website-nav ul>li>a{color:#000;font-size:12pt;font-weight:700;font-style:normal}nav.website-nav ul>li>a:hover{color:#4f4f4f}nav.website-nav ul>li.active>a{color:#828282;font-style:italic}nav.website-nav ul>li.active>a:hover{color:#828282}nav.website-nav ul>li.special>a{color:#2577a6}nav.website-nav ul>li.special>a:hover{color:#4495c4}nav.website-nav ul>li.special.active>a{color:#4495c4;font-style:italic}nav.website-nav ul>li.special.active>a:hover{color:#4495c4}body>main>header{text-align:center;display:inherit;grid-template-columns:inherit;grid-column:full}body>main>header>span{color:#2577a6;font-family:Yeseva One,Lora,Georgia,serif;margin:0;margin-top:.2em}body>main>header>span>h1{margin:0}@media(min-width:601px){body>main>header>span{font-size:24pt;grid-column:main}}@media(max-width:600px){body>main>header>span{font-size:5.6vw;grid-column:main}}body>main>header>div.header-nav{grid-column:main}body>main>header>div.header-nav>nav{position:relative}body>main>header>div.header-nav>nav>ul{padding:0}body>main>header>div.header-nav .fa-ellipsis-h{font-size:36px}body>main>header>div.header-nav .nav-open-btn{display:none}@media(max-width:600px){body>main>header>div.header-nav .nav-open-btn{display:inline-block;height:45px;padding-left:70px;padding-right:70px;-webkit-filter:invert(17%) sepia(68%) saturate(846%) hue-rotate(163deg) brightness(95%) contrast(99%);filter:invert(17%) sepia(68%) saturate(846%) hue-rotate(163deg) brightness(95%) contrast(99%)}body>main>header>div.header-nav nav{display:none}}body>main>header>div.fullscreen-nav{visibility:hidden;position:fixed;background-color:#063956;top:0;left:0;width:100%;height:0;overflow:hidden;opacity:0;transition:opacity .35s,visibility .35s,height .35s;z-index:999;text-align:left}body>main>header>div.fullscreen-nav.open{visibility:visible;opacity:1;height:100%}body>main>header>div.fullscreen-nav .nav-close-btn{-webkit-filter:invert(99%) sepia(3%) saturate(250%) hue-rotate(230deg) brightness(120%) contrast(100%);filter:invert(99%) sepia(3%) saturate(250%) hue-rotate(230deg) brightness(120%) contrast(100%);width:68px;height:68px;padding:20px;position:absolute;top:1.2em;right:1.2em;font-size:2em;font-style:light}body>main>header>div.fullscreen-nav>nav{height:100%}body>main>header>div.fullscreen-nav>nav>ul{width:80%;position:absolute;top:50%;left:40%;transform:translate(-40%,-50%);line-height:2.4em}body>main>header>div.fullscreen-nav>nav>ul>li{display:block}body>main>header>div.fullscreen-nav>nav>ul>li>a{font-size:2em;color:#fff;font-weight:400;font-style:normal}body>main>header>div.fullscreen-nav>nav>ul>li>a:hover{color:#e0e0e0}body>main>header>div.fullscreen-nav>nav>ul>li.active>a{color:#bdbdbd;font-style:italic}body>main>header>div.fullscreen-nav>nav>ul>li.active>a:hover{color:#bdbdbd}body>main>header>div.fullscreen-nav>nav>ul>li.special>a{color:#d9bd7e}body>main>header>div.fullscreen-nav>nav>ul>li.special>a:hover{color:#a8883c}body>main>header>div.fullscreen-nav>nav>ul>li.special.active>a{color:#a8883c;font-style:italic}body>main>header>div.fullscreen-nav>nav>ul>li.special.active>a:hover{color:#a8883c}html{height:100%}body{min-height:100%;position:relative}main{width:100%;position:relative;display:grid;padding-bottom:5em}@media(min-width:981px){main{grid-template-columns:[full-start] minmax(1em,1fr) [expansion-start] minmax(0,8em) [main-start] minmax(12em,600px) [main-end] minmax(0,8em) [expansion-end] minmax(1em,1fr) [full-end]}}@media(max-width:980px){main{grid-template-columns:[full-start] minmax(1em,1fr) [main-start] minmax(12em,600px) [main-end] minmax(1em,1fr) [full-end]}}main>figure{margin:0;display:inherit;grid-template-columns:inherit;grid-column:full;background-color:#111;color:#fff}main>figure>*{grid-column:main}main>*{padding:.7em;margin:0;grid-column:main}body{font-family:Charter,Merriweather,Lucida Bright,serif;font-size:14pt;line-height:1.35;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;text-rendering:optimizeLegibility}p{margin:.5em 0}a{transition-duration:.1s;transition-timing-function:ease-in-out;transition-property:color;font-family:Lora,Georgia,serif;font-style:italic;font-size:.95em;color:#4495c4;text-decoration:none}a:hover{color:#9dcbe6}a.big-link{font-size:24px;font-weight:700}a.header-anchor{color:#bdbdbd}a.header-anchor:hover{color:#e0e0e0}@media(min-width:981px){a.header-anchor{font-size:.8em;position:absolute;left:-1.1em;top:.2em}}blockquote{font-size:.95em;line-height:1.3;margin-left:2.5rem;font-style:italic}ol{list-style-type:decimal}ol>li>ol{list-style-type:lower-roman}ol>li>ol>li>ol{list-style-type:lower-latin}nav.table-of-contents>ol>li>a{font-style:normal;font-size:.95em}dl>dt{list-style:none;font-weight:700}dl>dd{margin-left:0;margin-bottom:1em}@media(max-width:980px){dl>dd,dl>dt{margin-left:40px}}dl.chevron>dt::before{content:"›";font-size:2em;margin-left:-35px;margin-top:-20px;position:absolute;padding:.1em .2em}dl.numbered{counter-reset:list-counter}dl.numbered>dt::before{content:counter(list-counter);counter-increment:list-counter;font-size:.8em;margin-left:-2.5em;margin-top:.17em;position:absolute;padding:.1em .5em;border:.1em solid;border-radius:1em}h1,h2,h3,h4,h5,h6{position:relative;margin-bottom:.5em;margin-top:.8em}h2{font-size:1.35em}h3{font-size:1.05em}table{border-spacing:.7em}table>thead{text-align:left}hr{width:100%;border:0;border-bottom:3px dotted #e0e0e0}mark{background-color:#ffed5a}.style-links a{font-family:Lora,Georgia,serif;font-size:.94em;font-variant:small-caps;letter-spacing:.1em;text-decoration:none;text-transform:lowercase}address{display:inline;font-style:inherit}select{padding:.2em 1em}.selector-code-block{display:none}article.main{display:inherit;grid-column:full;grid-template-columns:inherit;padding:0}article.main>*{grid-column:main}article.main>h1{font-size:1.6em;line-height:118%;margin:.4em;text-align:center}article.main>time.post-date{color:#828282;display:block;text-align:center}article.main>.full-width{background-color:#faf8f5;display:inherit;grid-column:full;grid-template-columns:inherit;margin:0;padding:1em 1em 0 1em;margin:1em 0;overflow:auto}article.main>.full-width.align-main>*{grid-column:main}article.main>.full-width>*{margin-bottom:1em}article.main .post-cover{margin:1em 0}article.main .post-cover>img{margin:0 auto}article.main .post-end-cta{background-color:#faf8f5;margin:1em 0;padding:1.2em}article.main .center-horizontal{margin:0 auto}article.main .post-cover{display:grid;grid-template-columns:inherit;grid-column:expansion;justify-content:center}article.main .post-cover>figcaption{grid-column:main;padding-top:1em}article.main .post-cover>img{grid-column:expansion}@media(max-width:980px){article.main .full-width-on-small-screens{grid-column:full!important}article.main .post-cover{grid-column:full}article.main .post-cover>img{grid-column:full}}@media(min-width:981px){article.main .expand-on-desktop{grid-column:expansion!important}article.main div.aside-wrapper{visibility:hidden;height:0;width:0;padding:0;margin:0;border:none}article.main div.aside-wrapper>aside{visibility:visible;background-color:#fff;padding:.5em;position:relative;left:calc(2.5rem * -4 - 1em);width:calc(2.5rem * 4)}}.post-list .post-summary{margin:1.4em 0}.post-list .post-summary h3{margin:10px 0}.post-list .post-summary h3>a{color:#000;font-family:Lora,Georgia,serif;font-size:1.25em;font-style:normal;font-weight:700}.post-list .post-summary img{border-radius:.2em;border-color:#4f4f4f;max-height:200px;-o-object-fit:cover;object-fit:cover;width:100%}.post-list .post-summary .description{margin:11px 0}.post-list .post-summary .tags>a{transition-duration:.1s;transition-timing-function:ease-in-out;background-color:#f2f2f2;border-radius:1em;color:#4f4f4f;display:inline-block;font-size:12px;margin-bottom:5px;margin-right:7px;padding:4px 11px;text-decoration:none;transition-property:background-color}.post-list .post-summary .tags>a:hover{background-color:#e0e0e0}.landing-hero{margin-bottom:1em}.landing-hero p.hero-subtitle{font-family:Lora,Georgia,serif;font-style:italic;font-weight:700;margin-bottom:5px}.landing-hero p.hero-description{font-size:32px;margin:25px 0}@media(min-width:981px){.landing-hero{grid-column:main}}.index-summaries{display:flex;gap:40px;flex-wrap:wrap}@media(min-width:981px){.index-summaries{grid-column:main}}.index-summaries>div{flex-grow:1;flex-basis:300px}.index-summaries>div>h2{font-size:2em;font-family:Yeseva One,Lora,Georgia,serif;font-weight:400;margin-bottom:0}body{background-color:#fff}figure img{max-width:100%}figure>figcaption{color:#828282}figure.center-contents>*{margin:0 auto}.youtube-embed{position:relative;width:100%;padding-top:56.25%}.youtube-embed>iframe{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}</style>
+
+  <script src="/js/nav-overlay.js"></script>
+
+  <!-- IE < 10 -->
+  <!--[if IE]>
+  <script type="text/javascript">
+      window.location = "/upgrade-browser";
+  </script>
+  <![endif]-->
+
+  <!-- IE >= 10 -->
+  <script type="text/javascript">
+      if (window.navigator.msPointerEnabled) {
+          window.location = "/upgrade-browser";
+      }
+  </script>
+  
+  <script data-goatcounter="https://pseigo.goatcounter.com/count" async src="https://gc.zgo.at/count.js">
+  </script>
+</head>
+
+<body>
+<main><header>
+  <span>
+    <h1>Peyton Seigo</h1>
+  </span>
+  <div class="header-nav">
+    <img onclick="toggleNavOverlay()" src="/images/icons/menu.svg" onerror="this.src='/images/icons/menu.png'; this.onerror = null;" class="nav-open-btn" alt="Menu"><nav role="navigation" class="website-nav">
+  <ul><li class=" ">
+      <a href="/">Home</a>
+    </li><li class=" ">
+      <a href="/projects/">Projects</a>
+    </li><li class=" ">
+      <a href="/about/">About</a>
+    </li><li class=" special">
+      <a href="/contact/">Get in Touch</a>
+    </li></ul>
+</nav>
+</div>
+  <div class="fullscreen-nav"><nav role="navigation" class="website-nav">
+  <ul><li class=" ">
+      <a href="/">Home</a>
+    </li><li class=" ">
+      <a href="/projects/">Projects</a>
+    </li><li class=" ">
+      <a href="/about/">About</a>
+    </li><li class=" special">
+      <a href="/contact/">Get in Touch</a>
+    </li></ul>
+</nav>
+<img onclick="toggleNavOverlay()" src="/images/icons/close.svg" onerror="this.src='/images/icons/close.png'; this.onerror = null;" class="nav-close-btn" alt="Close">
+  </div>
+</header>
+
+<article class="main">
+  <h1>Internpaths - Job Search App Prototype</h1><time class="post-date" datetime="9/4/2020">
+    Friday, September 4, <span class="small-caps">2020
+</span>  </time><figure class="post-cover">
+      <img src="/images/projects/internpaths/cover.jpg" alt="Internpath&#39;s map view on the job dashboard."><figcaption>Internpath’s map view on the job dash­board.</figcaption></figure><p>I worked with three other de­vel­op­ers to build a soft­ware demo in less than 24 hours at the <a href="https://www.nwhacks.io/">nwHacks</a> <a href="https://nwhacks2019.devpost.com/">2019 hackathon</a>, hosted at the University of British Columbia. At that point I was halfway through my sec­ond year of uni­ver­sity.</p>
+<ul>
+<li><a href="https://github.com/pseigo/internpaths">GitHub repos­i­tory</a></li>
+<li><a href="https://devpost.com/software/internpaths">Project page</a></li>
+</ul>
+<h2 id="slides"><a class="header-anchor" href="#slides">§</a> Slides</h2>
+<p>Below is the slide-deck Sergey came up with for us, and I have to say, I think our pre­sen­ta­tion went well! We had ﬁve or six judges tun­ing in at a time and ask­ing ques­tions, so that was both ex­hil­a­rat­ing and a lit­tle nerve-wreck­ing con­sid­er­ing how much we had strug­gled the pre­ced­ing 20ish hours.</p>
+<div class="youtube-embed expand-on-desktop full-width-on-small-screens">
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT0tYHC3pLXLC_EyjwH1-TXSrwINxLvOm-fQDGHvb9oJVnfb2M-ZS_93uLtqsQfoDae0BJjZqZM8BOf/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+<h2 id="overview"><a class="header-anchor" href="#overview">§</a> Overview</h2>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/landing.jpg" alt="A screenshot of the application's landing page.">
+    <figcaption>The land­ing page.</figcaption>
+  </div>
+</figure>
+<p>The land­ing page was fairly sim­ple. Enter a job ti­tle and lo­ca­tion, and you’ll be di­rected to the jobs dash­board.</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/map.jpg" alt="A screenshot the application's dashboard page.">
+    <figcaption>A map show­ing job post­ings based on prox­im­ity on the dash­board page.</figcaption>
+  </div>
+</figure>
+<p>The dash­board shows a map with nearby job post­ings (using <code>react-google-maps</code>) with brief de­scrip­tions in a side­bar.</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/table.jpg" alt="Another screenshot of the application's dashboard page.">
+    <figcaption>A more de­tailed table of nearby job post­ings on the dash­board page.</figcaption>
+  </div>
+</figure>
+<p>Below the map, you can ﬁnd a more ex­ten­sive list of post­ings. We burnt a lot of time at this stage trou­bleshoot­ing <span class="small-caps">UI</span> bugs and get­ting the front-end to grab data from the Mongo data­base. Unfortunately, we did­n’t have time to im­ple­ment the rest of our fea­tures. Time was short so we started work­ing on the demo. One or two of us also slept at some point.</p>
+<h2 id="background"><a class="header-anchor" href="#background">§</a> Background</h2>
+<p>This is­n’t the ﬁrst time I’ve wanted to build an ag­gre­ga­tion app. Job post­ings, events, ho­tels, and ﬂights all suf­fer the same prob­lem: con­tent is split across dozens of ser­vices that do the same thing. If you re­ally want to see what’s out there, you have to sift through many plat­forms. A prim­i­tive so­lu­tion is to keep a note or spread­sheet with all the in­ter­est­ing con­tent you ﬁnd, but this can be la­bo­ri­ous and eas­ily be­come out­dated. This hackathon was prob­a­bly my ﬁrst at­tempt at solv­ing this prob­lem, and I can bet it won’t be the last.</p>
+<p>We built a pro­to­type for a web app for ag­gre­gat­ing and track­ing the sta­tus of job ap­pli­ca­tions. For each job post­ing, you can track the stage in the ap­pli­ca­tion process, con­tact in­for­ma­tion, emails, cover let­ters, and re­sumes.</p>
+<p>Some other fea­tures we had in mind were to:</p>
+<ul>
+<li>Send re­minders to fol­low-up af­ter in­ter­views and af­ter ap­pli­ca­tions if you haven’t heard any­thing back.</li>
+<li>Aggregate post­ings from pop­u­lar job boards and dis­play them on a map based on prox­im­ity.</li>
+<li>Automated or<span class="push-double"></span> <span class="pull-double">“</span>quick ap­ply” job ap­pli­ca­tions (you see this on LinkedIn and other plat­forms nowa­days).</li>
+</ul>
+<p>Aggregating post­ings did­n’t work out be­cause all the APIs we wanted to use had ac­cess turn­arounds of more than one day, so we man­u­ally gen­er­ated some data for the demo.</p>
+<p>Unfortunately we ran out of time be­fore ﬁn­ish­ing a min­i­mum vi­able prod­uct (<span class="small-caps">MVP</span>), but we had enough done to ex­plain our ideas to the judges. We were all new to web de­vel­op­ment, so our pro­ject just turned out as an in­ter­ac­tive mock-up. But it was a great in­tro­duc­tion to web de­vel­op­ment and an ex­er­cise in man­ag­ing small teams. It was also lots of fun, of course. The at­mos­phere of hun­dreds of stu­dents work­ing tire­lessly to build some­thing awe­some is un­like any­thing else.</p>
+<p>I spent the week prior learn­ing React –- and try­ing out every free hip-hop class I could ﬁnd, as a uni­ver­sity stu­dent does –- so I’d be pre­pared for the hackathon. But I did­n’t have a team <em>or</em> any pro­ject ideas in mind. I went to a net­work­ing work­shop a few days be­fore the hackathon, but be­ing a bud­ding ﬁrst year, I had a hard time ﬁnd­ing my place amongst stu­dents who had full-stack apps, ma­chine learn­ing pro­jects, and in­dus­try ex­pe­ri­ence un­der their belts. But I met <a href="https://www.linkedin.com/in/kymotsujason/">Jason Yue</a>. A few days later, he in­tro­duced me to <a href="https://www.linkedin.com/in/skaravaev/">Sergey Karavaev</a> and <a href="https://github.com/gdldg">Daniel Gomez</a>. If I re­call cor­rectly, we were all strangers to each other. But on January 26th, 2019 — the day of the hackathon — we be­came the<span class="push-double"></span> <span class="pull-double">“</span>Goodfellas”. Jason was a huge help with his back­ground in the <abbr title="MongoDB, Express, React, Node.js"><span class="small-caps">MERN</span></abbr> JavaScript stack and I at­tribute most of our suc­cess to his de­ter­mi­na­tion, per­se­ver­ance, and pa­tience.</p>
+<p>After set­tling on the idea, we spent about six hours get­ting our de­vel­op­ment en­vi­ron­ments set up. Yes, you read that right. Good thing the event of­fered bot­tom­less cof­fee and Guayakí Yerba Mate! Once we were on our feet, we raced to build our prod­uct as we stud­ied new con­cepts and tools just-in-time for im­ple­men­ta­tion.</p>
+<p>I helped ﬂesh out of the idea, de­signed <span class="small-caps">UI</span> wire­frames, cre­ated the front end in­ter­face with React and Ant Design, and served as an or­ga­nizer for the team. I made sure every­one was in­volved in idea gen­er­a­tion and that we were com­mu­ni­cat­ing through­out the event: each per­son let the oth­ers know what he work­ing on, his progress, and if he needed help. We all had our eyes on the clock and made sure each task was bring­ing us closer to the ﬁ­nal demo.</p>
+<h2 id="the-plan"><a class="header-anchor" href="#the-plan">§</a> The plan</h2>
+<p>Our plan was to:</p>
+<ol>
+<li>Come up with sev­eral ideas and choose the best one.</li>
+<li>Choose our tools and get every­one set up.</li>
+<li>Deﬁne key fea­tures and draw wire­frames.</li>
+<li>Build the pro­ject, in­cor­po­rate oth­ers’ changes, and con­tin­u­ally test.</li>
+<li>Identify any big prob­lems that come up and weigh the cost of ad­dress­ing them.</li>
+<li>Prepare our demo and pre­sen­ta­tion.</li>
+</ol>
+<p>In a work­shop be­fore the event, I learned that in hackathons, sell­ing your idea is much more im­por­tant than the im­ple­men­ta­tion. In par­tic­u­lar, they ad­vised that an un­ﬁn­ished im­ple­men­ta­tion is <span class="small-caps">OK</span> and that mock-ups are enough, but it’s still im­por­tant to have a work­ing demo.</p>
+<p>With that in mind, we prob­a­bly could have made nice mock-ups in some­thing like Figma for our en­tire app with plenty of time to spare. That would have made for a more sub­stan­tial demo and it would’ve let us think more about the busi­ness as­pects. But my goal was to get my hands dirty build­ing some­thing since it’s hard to ﬁnd time to do that dur­ing uni­ver­sity — or more re­al­is­ti­cally, it can be hard to jus­tify do­ing cog­ni­tively in­ten­sive hob­bies when you’re a full-time stu­dent tak­ing chal­leng­ing tech­ni­cal classes. Hackathons are a great way to for­get about the world for a week­end and get in the build­ing mind­set.</p>
+<h2 id="wireframes"><a class="header-anchor" href="#wireframes">§</a> Wireframes</h2>
+<p>I worked with Sergey to sketch some rough wire­frames for our app. First we thought a bit about the themes around job search­ing.</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/job-search-themes.jpg" alt="Drawing of a web diagram.">
+    <figcaption>A web di­a­gram to mindmap themes about the app.</figcaption>
+  </div>
+</figure>
+<p><span class="pull-double">“</span>Proximity” and<span class="push-double"></span> <span class="pull-double">“</span>utility” be­came our fo­cus with a map-based view and tool to track that sta­tus of ap­pli­ca­tions. Then we sketched what the app and its ﬂow might look like. We lim­ited our sketches to some­thing like two min­utes to make the most of our time. I don’t have copies of his draw­ings, but here’s what I came up with:</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/wireframe-1.jpg" alt="Drawing of a wireframe for the front-end application.">
+    <figcaption>A wire­frame show­ing a land­ing page for re­turn­ing vis­i­tors, a de­tailed page for some job post­ing, a cover let­ter used for some ap­pli­ca­tion, and a pro­ﬁle in­for­ma­tion screen.</figcaption>
+  </div>
+</figure>
+<p>The idea is that re­turn­ing users would hit a land­ing page with re­cent ap­pli­ca­tions sum­ma­rized at the top, fol­lowed by a list of new post­ings to search through. Each post­ing would have its own page with its sta­tus, de­scrip­tion, lo­ca­tion, and any rel­e­vant doc­u­ments — these doc­u­ments could in­clude cover let­ters, re­sumes, and emails.</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/wireframe-2.jpg" alt="Drawing of a wireframe for the front-end application.">
+    <figcaption>A wire­frame show­ing a land­ing page for new vis­i­tors, a search menu, and a de­tailed table of avail­able job post­ings.</figcaption>
+  </div>
+</figure>
+<p>New users would have a dif­fer­ent land­ing page that tells them what the app is all about. The draw­ing on the right is a table of the other avail­able post­ings.</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/wireframe-dashboard.jpg" alt="Drawing of a wireframe for the front-end application.">
+    <figcaption>An im­proved it­er­a­tion of the user dash­board.</figcaption>
+  </div>
+</figure>
+<p>I went through a cou­ple it­er­a­tions of the dash­board. This is most sim­i­lar to what we ended up with. I apol­o­gize for the mess; ap­par­ently that’s what time­box­ing does to you!</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/internpaths/wireframe-landing.jpg" alt="Drawing of a wireframe for the front-end application.">
+    <figcaption>Another look at the land­ing page’s search fea­ture.</figcaption>
+  </div>
+</figure>
+<p>I did an­other sketch of the land­ing page. The de­sign did­n’t change much, but it was clear now that the search form was the most im­por­tant part of this page. I looked at how the pop­u­lar job boards de­sign their search and re­al­ized they all do the same thing: key­words (e.g., job ti­tle) and lo­ca­tion. I won­dered if it was worth adding any­thing else –- in the sketch you can see I was still think­ing about prox­im­ity.</p>
+<h2 id="implementation-and-learnings"><a class="header-anchor" href="#implementation-and-learnings">§</a> Implementation and learn­ings</h2>
+<p>I’ll be hon­est: <strong>I had no idea what I was do­ing</strong>. I spent a week try­ing to learn React from YouTube videos and blog posts, but it was­n’t enough to feel re­ally con­ﬁ­dent with the tool. That be­ing said, we did ﬁn­ish a (mostly) work­ing demo!</p>
+<p>Most of my work was done in the React com­po­nents in <a href="https://github.com/pseigo/internpaths/tree/master/client/src/components"><code>internpaths/client/src/components/</code></a>. I re­al­ize the folder struc­ture could use some work, but hey, I did­n’t know any bet­ter! I’d go through the im­ple­men­ta­tion, but none of it is too sur­pris­ing if you’ve ever used React.</p>
+<p>We used the <a href="https://ant.design/">Ant Design</a> com­po­nent li­brary to let us fo­cus more on the struc­ture of the site. These kinds of tools (<span class="small-caps">CSS</span> frame­works, light­weight JavaScript li­braries, com­po­nent li­braries) are great when you just need to get some­thing out there and don’t want to spend time rein­vent­ing the wheel.</p>
+<hr>
+<p>On the topic of learn­ing… re­cently, about a year af­ter the hackathon, I spent a few days (re-)learning the ba­sics of React and picked up way more than I did the ﬁrst time.</p>
+<p>First, I got a quick in­tro­duc­tion with a small React course on Pluralsight. The in­struc­tor gave some use­ful tips for peo­ple us­ing JavaScript <span class="small-caps">ES6</span> for the ﬁrst time and sub­tleties for React new­com­ers. Then, I read the of­ﬁ­cial <a href="https://reactjs.org/docs/getting-started.html">React<span class="push-double"></span> <span class="pull-double">“</span>Getting Started” guide</a> which ex­plains con­cepts con­cisely and is more com­plete than most videos out there.</p>
+<p>If I had to give a tip to new pro­gram­mers, it would be to learn how to ﬁnd what you need on­line (hone your<span class="push-double"></span> <span class="pull-double">“</span>Google-fu”) and get lots of prac­tice read­ing doc­u­men­ta­tion. Well-written docs (and books!) are a trea­sure trove. But tech­ni­cal read­ing can scare some peo­ple away (see: CMake doc­u­men­ta­tion) to other medi­ums.</p>
+<h2 id="what-i-would-do-differently"><a class="header-anchor" href="#what-i-would-do-differently">§</a> What I would do dif­fer­ently</h2>
+<p>In the fu­ture, I’d hope to be com­fort­able enough with my tools to throw a small app to­gether in a short time than try to learn every­thing from scratch on the spot. Learning things prop­erly takes time, so I think hackathons are best suited for meet­ing and work­ing with new peo­ple, pro­to­typ­ing crazy/​fun ideas, net­work­ing, and let­ting your­self try some­thing dif­fer­ent.</p>
+<p>With that said, I cer­tainly don’t re­gret at­tend­ing nwHacks be­cause it was such a great ex­pe­ri­ence. I’m glad I took the leap!</p>
+
+
+  <hr style="margin-top: 1.2em;"><p>
+      <em>Continue the dis­cus­sion <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet/?text=&ldquo;Internpaths - Job Search App Prototype&rdquo;&url=https://peytonseigo.ca/internpaths/&via=peytonseigo">on Twitter</a>!</em>
+    </p><div class="post-end-cta">
+      <b>I am avail­able for soft­ware in­tern­ships from April to December of 2022</b> (4 or 8 month place­ments). Take a look at some of the <a href="/projects">pro­jects I’ve done</a> or my <a href="https://github.com/pseigo/">GitHub pro­ﬁle</a>. If your team is look­ing for a com­puter sci­ence stu­dent, please feel free to <a href="/contact">get in touch</a>!
+    </div></article>
+
+</main>
+</body>
+</html>

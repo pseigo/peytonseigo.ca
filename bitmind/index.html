@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bitmind - Decision Making Assistant - Peyton Seigo</title>
+
+  <meta name="author" content="Peyton Seigo">
+  <meta name="description" content="A desktop app to journal tough decisions, choices, and their consequences.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2577a6">
+
+  <!--
+   _          _ _       _
+  | |        | | |     | |
+  | |__   ___| | | ___ | |
+  | '_ \ / _ \ | |/ _ \| |
+  | | | |  __/ | | (_) |_|
+  |_| |_|\___|_|_|\___/(_)
+
+  While you're here, I thought I'd let you know that
+  I am available for software internships from April
+  to December of 2022. If your team is looking for a
+  computer science student, please feel free to get
+  in touch!
+
+  Otherwise, if you're just curious what makes this
+  site tick or have any other questions, feel free
+  to reach out! I'd love to hear from you.
+
+  https://peytonseigo.ca/contact
+
+  -->
+  
+  <meta property="og:site_name" content="Peyton Seigo">
+  <meta property="og:url" content="https://peytonseigo.ca/bitmind/">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:site" content="@peytonseigo">
+  <meta name="twitter:creator" content="@peytonseigo">
+
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+
+  <meta property="og:title" content="Bitmind - Decision Making Assistant">
+  <meta name="twitter:title" content="Bitmind - Decision Making Assistant">
+  <meta property="og:description" content="A desktop app to journal tough decisions, choices, and their consequences.">
+  <meta name="twitter:description" content="A desktop app to journal tough decisions, choices, and their consequences.">
+  <meta property="og:image" content="https://peytonseigo.ca/images/projects/bitmind/cover.png">
+  <meta name="twitter:image" content="https://peytonseigo.ca/images/projects/bitmind/cover.png">
+  <meta property="og:image:alt" content="Bitmind&#39;s dashboard.">
+  <meta name="twitter:image:alt" content="Bitmind&#39;s dashboard.">
+
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="180x180" href="https://peytonseigo.ca/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://peytonseigo.ca/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" sizes="16x16" href="https://peytonseigo.ca/favicon-16x16.png">
+  <link rel="manifest" href="https://peytonseigo.ca/site.webmanifest">
+
+  <link rel="stylesheet" href="/css/prism-duotone-light.css"><style>/*! modern-normalize v0.6.0 | MIT License | https://github.com/sindresorhus/modern-normalize */*,::after,::before{box-sizing:border-box}:root{-moz-tab-size:4;-o-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"}hr{height:0}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{padding:0}progress{vertical-align:baseline}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}@font-face{font-family:Charter;src:url(/fonts/charter_regular-webfont.eot);src:url(/fonts/charter_regular-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_bold-webfont.eot);src:url(/fonts/charter_bold-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_bold-webfont.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_italic-webfont.eot);src:url(/fonts/charter_italic-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_italic-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Charter;src:url(/fonts/charter_bold_italic-webfont.eot);src:url(/fonts/charter_bold_italic-webfont.eot?#iefix) format("embedded-opentype"),url(/fonts/charter_bold_italic-webfont.woff) format("woff");font-weight:700;font-style:italic;font-display:swap}@font-face{font-family:Lora;src:url(/fonts/lora-variablefont_wght-webfont.woff2) format("woff2"),url(/fonts/lora-variablefont_wght-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Lora;src:url(/fonts/lora-italic-variablefont_wght-webfont.woff2) format("woff2"),url(/fonts/lora-italic-variablefont_wght-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-light-webfont.woff2) format("woff2"),url(/fonts/merriweather-light-webfont.woff) format("woff");font-weight:300;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-lightitalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-lightitalic-webfont.woff) format("woff");font-weight:300;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-regular-webfont.woff2) format("woff2"),url(/fonts/merriweather-regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-italic-webfont.woff2) format("woff2"),url(/fonts/merriweather-italic-webfont.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-bold-webfont.woff2) format("woff2"),url(/fonts/merriweather-bold-webfont.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-bolditalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-bolditalic-webfont.woff) format("woff");font-weight:700;font-style:italic;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-black-webfont.woff2) format("woff2"),url(/fonts/merriweather-black-webfont.woff) format("woff");font-weight:900;font-style:normal;font-display:swap}@font-face{font-family:Merriweather;src:url(/fonts/merriweather-blackitalic-webfont.woff2) format("woff2"),url(/fonts/merriweather-blackitalic-webfont.woff) format("woff");font-weight:900;font-style:italic;font-display:swap}@font-face{font-family:"Yeseva One";src:url(/fonts/yesevaone-regular-webfont.woff2) format("woff2"),url(/fonts/yesevaone-regular-webfont.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Light.woff2) format("woff2"),url(/fonts/FiraCode-Light.woff) format("woff");font-weight:300;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Regular.woff2) format("woff2"),url(/fonts/FiraCode-Regular.woff) format("woff");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Medium.woff2) format("woff2"),url(/fonts/FiraCode-Medium.woff) format("woff");font-weight:500;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-SemiBold.woff2) format("woff2"),url(/fonts/FiraCode-SemiBold.woff) format("woff");font-weight:600;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code";src:url(/fonts/FiraCode-Bold.woff2) format("woff2"),url(/fonts/FiraCode-Bold.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:"Fira Code VF";src:url(/fonts/FiraCode-VF.woff2) format("woff2-variations"),url(/fonts/FiraCode-VF.woff) format("woff-variations");font-weight:300 700;font-style:normal;font-display:swap}footer{color:#828282;font-size:.75em;font-style:italic;letter-spacing:.075em;padding:1em;position:absolute;bottom:0;left:0;right:0;text-align:center}nav.website-nav ul{list-style:none;margin:0 auto}nav.website-nav li{display:inline;margin:10px}nav.website-nav ul>li>a{color:#000;font-size:12pt;font-weight:700;font-style:normal}nav.website-nav ul>li>a:hover{color:#4f4f4f}nav.website-nav ul>li.active>a{color:#828282;font-style:italic}nav.website-nav ul>li.active>a:hover{color:#828282}nav.website-nav ul>li.special>a{color:#2577a6}nav.website-nav ul>li.special>a:hover{color:#4495c4}nav.website-nav ul>li.special.active>a{color:#4495c4;font-style:italic}nav.website-nav ul>li.special.active>a:hover{color:#4495c4}body>main>header{text-align:center;display:inherit;grid-template-columns:inherit;grid-column:full}body>main>header>span{color:#2577a6;font-family:Yeseva One,Lora,Georgia,serif;margin:0;margin-top:.2em}body>main>header>span>h1{margin:0}@media(min-width:601px){body>main>header>span{font-size:24pt;grid-column:main}}@media(max-width:600px){body>main>header>span{font-size:5.6vw;grid-column:main}}body>main>header>div.header-nav{grid-column:main}body>main>header>div.header-nav>nav{position:relative}body>main>header>div.header-nav>nav>ul{padding:0}body>main>header>div.header-nav .fa-ellipsis-h{font-size:36px}body>main>header>div.header-nav .nav-open-btn{display:none}@media(max-width:600px){body>main>header>div.header-nav .nav-open-btn{display:inline-block;height:45px;padding-left:70px;padding-right:70px;-webkit-filter:invert(17%) sepia(68%) saturate(846%) hue-rotate(163deg) brightness(95%) contrast(99%);filter:invert(17%) sepia(68%) saturate(846%) hue-rotate(163deg) brightness(95%) contrast(99%)}body>main>header>div.header-nav nav{display:none}}body>main>header>div.fullscreen-nav{visibility:hidden;position:fixed;background-color:#063956;top:0;left:0;width:100%;height:0;overflow:hidden;opacity:0;transition:opacity .35s,visibility .35s,height .35s;z-index:999;text-align:left}body>main>header>div.fullscreen-nav.open{visibility:visible;opacity:1;height:100%}body>main>header>div.fullscreen-nav .nav-close-btn{-webkit-filter:invert(99%) sepia(3%) saturate(250%) hue-rotate(230deg) brightness(120%) contrast(100%);filter:invert(99%) sepia(3%) saturate(250%) hue-rotate(230deg) brightness(120%) contrast(100%);width:68px;height:68px;padding:20px;position:absolute;top:1.2em;right:1.2em;font-size:2em;font-style:light}body>main>header>div.fullscreen-nav>nav{height:100%}body>main>header>div.fullscreen-nav>nav>ul{width:80%;position:absolute;top:50%;left:40%;transform:translate(-40%,-50%);line-height:2.4em}body>main>header>div.fullscreen-nav>nav>ul>li{display:block}body>main>header>div.fullscreen-nav>nav>ul>li>a{font-size:2em;color:#fff;font-weight:400;font-style:normal}body>main>header>div.fullscreen-nav>nav>ul>li>a:hover{color:#e0e0e0}body>main>header>div.fullscreen-nav>nav>ul>li.active>a{color:#bdbdbd;font-style:italic}body>main>header>div.fullscreen-nav>nav>ul>li.active>a:hover{color:#bdbdbd}body>main>header>div.fullscreen-nav>nav>ul>li.special>a{color:#d9bd7e}body>main>header>div.fullscreen-nav>nav>ul>li.special>a:hover{color:#a8883c}body>main>header>div.fullscreen-nav>nav>ul>li.special.active>a{color:#a8883c;font-style:italic}body>main>header>div.fullscreen-nav>nav>ul>li.special.active>a:hover{color:#a8883c}html{height:100%}body{min-height:100%;position:relative}main{width:100%;position:relative;display:grid;padding-bottom:5em}@media(min-width:981px){main{grid-template-columns:[full-start] minmax(1em,1fr) [expansion-start] minmax(0,8em) [main-start] minmax(12em,600px) [main-end] minmax(0,8em) [expansion-end] minmax(1em,1fr) [full-end]}}@media(max-width:980px){main{grid-template-columns:[full-start] minmax(1em,1fr) [main-start] minmax(12em,600px) [main-end] minmax(1em,1fr) [full-end]}}main>figure{margin:0;display:inherit;grid-template-columns:inherit;grid-column:full;background-color:#111;color:#fff}main>figure>*{grid-column:main}main>*{padding:.7em;margin:0;grid-column:main}body{font-family:Charter,Merriweather,Lucida Bright,serif;font-size:14pt;line-height:1.35;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;text-rendering:optimizeLegibility}p{margin:.5em 0}a{transition-duration:.1s;transition-timing-function:ease-in-out;transition-property:color;font-family:Lora,Georgia,serif;font-style:italic;font-size:.95em;color:#4495c4;text-decoration:none}a:hover{color:#9dcbe6}a.big-link{font-size:24px;font-weight:700}a.header-anchor{color:#bdbdbd}a.header-anchor:hover{color:#e0e0e0}@media(min-width:981px){a.header-anchor{font-size:.8em;position:absolute;left:-1.1em;top:.2em}}blockquote{font-size:.95em;line-height:1.3;margin-left:2.5rem;font-style:italic}ol{list-style-type:decimal}ol>li>ol{list-style-type:lower-roman}ol>li>ol>li>ol{list-style-type:lower-latin}nav.table-of-contents>ol>li>a{font-style:normal;font-size:.95em}dl>dt{list-style:none;font-weight:700}dl>dd{margin-left:0;margin-bottom:1em}@media(max-width:980px){dl>dd,dl>dt{margin-left:40px}}dl.chevron>dt::before{content:"›";font-size:2em;margin-left:-35px;margin-top:-20px;position:absolute;padding:.1em .2em}dl.numbered{counter-reset:list-counter}dl.numbered>dt::before{content:counter(list-counter);counter-increment:list-counter;font-size:.8em;margin-left:-2.5em;margin-top:.17em;position:absolute;padding:.1em .5em;border:.1em solid;border-radius:1em}h1,h2,h3,h4,h5,h6{position:relative;margin-bottom:.5em;margin-top:.8em}h2{font-size:1.35em}h3{font-size:1.05em}table{border-spacing:.7em}table>thead{text-align:left}hr{width:100%;border:0;border-bottom:3px dotted #e0e0e0}mark{background-color:#ffed5a}.style-links a{font-family:Lora,Georgia,serif;font-size:.94em;font-variant:small-caps;letter-spacing:.1em;text-decoration:none;text-transform:lowercase}address{display:inline;font-style:inherit}select{padding:.2em 1em}.selector-code-block{display:none}article.main{display:inherit;grid-column:full;grid-template-columns:inherit;padding:0}article.main>*{grid-column:main}article.main>h1{font-size:1.6em;line-height:118%;margin:.4em;text-align:center}article.main>time.post-date{color:#828282;display:block;text-align:center}article.main>.full-width{background-color:#faf8f5;display:inherit;grid-column:full;grid-template-columns:inherit;margin:0;padding:1em 1em 0 1em;margin:1em 0;overflow:auto}article.main>.full-width.align-main>*{grid-column:main}article.main>.full-width>*{margin-bottom:1em}article.main .post-cover{margin:1em 0}article.main .post-cover>img{margin:0 auto}article.main .post-end-cta{background-color:#faf8f5;margin:1em 0;padding:1.2em}article.main .center-horizontal{margin:0 auto}article.main .post-cover{display:grid;grid-template-columns:inherit;grid-column:expansion;justify-content:center}article.main .post-cover>figcaption{grid-column:main;padding-top:1em}article.main .post-cover>img{grid-column:expansion}@media(max-width:980px){article.main .full-width-on-small-screens{grid-column:full!important}article.main .post-cover{grid-column:full}article.main .post-cover>img{grid-column:full}}@media(min-width:981px){article.main .expand-on-desktop{grid-column:expansion!important}article.main div.aside-wrapper{visibility:hidden;height:0;width:0;padding:0;margin:0;border:none}article.main div.aside-wrapper>aside{visibility:visible;background-color:#fff;padding:.5em;position:relative;left:calc(2.5rem * -4 - 1em);width:calc(2.5rem * 4)}}.post-list .post-summary{margin:1.4em 0}.post-list .post-summary h3{margin:10px 0}.post-list .post-summary h3>a{color:#000;font-family:Lora,Georgia,serif;font-size:1.25em;font-style:normal;font-weight:700}.post-list .post-summary img{border-radius:.2em;border-color:#4f4f4f;max-height:200px;-o-object-fit:cover;object-fit:cover;width:100%}.post-list .post-summary .description{margin:11px 0}.post-list .post-summary .tags>a{transition-duration:.1s;transition-timing-function:ease-in-out;background-color:#f2f2f2;border-radius:1em;color:#4f4f4f;display:inline-block;font-size:12px;margin-bottom:5px;margin-right:7px;padding:4px 11px;text-decoration:none;transition-property:background-color}.post-list .post-summary .tags>a:hover{background-color:#e0e0e0}.landing-hero{margin-bottom:1em}.landing-hero p.hero-subtitle{font-family:Lora,Georgia,serif;font-style:italic;font-weight:700;margin-bottom:5px}.landing-hero p.hero-description{font-size:32px;margin:25px 0}@media(min-width:981px){.landing-hero{grid-column:main}}.index-summaries{display:flex;gap:40px;flex-wrap:wrap}@media(min-width:981px){.index-summaries{grid-column:main}}.index-summaries>div{flex-grow:1;flex-basis:300px}.index-summaries>div>h2{font-size:2em;font-family:Yeseva One,Lora,Georgia,serif;font-weight:400;margin-bottom:0}body{background-color:#fff}figure img{max-width:100%}figure>figcaption{color:#828282}figure.center-contents>*{margin:0 auto}.youtube-embed{position:relative;width:100%;padding-top:56.25%}.youtube-embed>iframe{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}</style>
+
+  <script src="/js/nav-overlay.js"></script>
+
+  <!-- IE < 10 -->
+  <!--[if IE]>
+  <script type="text/javascript">
+      window.location = "/upgrade-browser";
+  </script>
+  <![endif]-->
+
+  <!-- IE >= 10 -->
+  <script type="text/javascript">
+      if (window.navigator.msPointerEnabled) {
+          window.location = "/upgrade-browser";
+      }
+  </script>
+  
+  <script data-goatcounter="https://pseigo.goatcounter.com/count" async src="https://gc.zgo.at/count.js">
+  </script>
+</head>
+
+<body>
+<main><header>
+  <span>
+    <h1>Peyton Seigo</h1>
+  </span>
+  <div class="header-nav">
+    <img onclick="toggleNavOverlay()" src="/images/icons/menu.svg" onerror="this.src='/images/icons/menu.png'; this.onerror = null;" class="nav-open-btn" alt="Menu"><nav role="navigation" class="website-nav">
+  <ul><li class=" ">
+      <a href="/">Home</a>
+    </li><li class=" ">
+      <a href="/projects/">Projects</a>
+    </li><li class=" ">
+      <a href="/about/">About</a>
+    </li><li class=" special">
+      <a href="/contact/">Get in Touch</a>
+    </li></ul>
+</nav>
+</div>
+  <div class="fullscreen-nav"><nav role="navigation" class="website-nav">
+  <ul><li class=" ">
+      <a href="/">Home</a>
+    </li><li class=" ">
+      <a href="/projects/">Projects</a>
+    </li><li class=" ">
+      <a href="/about/">About</a>
+    </li><li class=" special">
+      <a href="/contact/">Get in Touch</a>
+    </li></ul>
+</nav>
+<img onclick="toggleNavOverlay()" src="/images/icons/close.svg" onerror="this.src='/images/icons/close.png'; this.onerror = null;" class="nav-close-btn" alt="Close">
+  </div>
+</header>
+
+<article class="main">
+  <h1>Bitmind - Decision Making Assistant</h1><time class="post-date" datetime="9/28/2020">
+    Monday, September 28, <span class="small-caps">2020
+</span>  </time><figure class="post-cover">
+      <img src="/images/projects/bitmind/cover.png" alt="Bitmind&#39;s dashboard."><figcaption>Bitmind’s dash­board.</figcaption></figure><p>I built a desk­top app to help jour­nal tough de­ci­sions, pos­si­ble choices, and the con­se­quences of those choices.</p>
+<p>This was a term pro­ject for a <a href="https://courses.students.ubc.ca/cs/courseschedule?pname=subjarea&amp;tname=subj-course&amp;dept=CPSC&amp;course=210">sec­ond year soft­ware en­gi­neer­ing course</a> at the University of British Columbia. I wanted to cre­ate some­thing be­yond the course’s de­fault pro­ject which was a par­tially com­pleted to-do list app. The course of­fered an al­ter­na­tive: stu­dents could choose to de­sign and build their own pro­ject from scratch, as long as it ful­ﬁlled sim­i­lar cri­te­ria as the stan­dard pro­ject. Most stu­dents chose the stan­dard pro­ject: in par­tic­u­lar, 413 out of 448 (~92%) stu­dents chose the stan­dard pro­ject while the other ~8% opted for a per­sonal pro­ject.</p>
+<p>An in­ter­est­ing do­main I wanted to ex­plore was im­prov­ing peo­ple’s lives. For this pro­ject, I wanted to help in­di­vid­u­als take re­spon­si­bil­ity in mak­ing bet­ter choices for them­selves.</p>
+<p>The in­ter­nal ap­pli­ca­tion model is ﬁn­ished and fully tested, but the <span class="small-caps">GUI</span> was never com­pletely ﬁn­ished given the time con­straints, other courses, and life get­ting in the way. It hap­pened to be the last 80% of work for 20% of the re­turns in per­sonal growth. But alas, such is the un­for­tu­nate fate for many a side-pro­ject. That said, there is still lots to talk about and I look back fondly on the code I wrote.</p>
+<p>The <a href="https://github.com/pseigo/bitmind-decisions">source code</a> is avail­able on GitHub.</p>
+<nav class="table-of-contents"><ol><li><a href="#motivation"> Motivation</a></li><li><a href="#project-requirements"> Project re­quire­ments</a></li><li><a href="#test-driven-development"> Test-driven de­vel­op­ment</a><ol><li><a href="#what-i-mean-by-%22shifting-complexity%22"> What I mean by<span class="push-double"></span> <span class="pull-double">“</span>shifting com­plex­ity”</a></li></ol></li><li><a href="#key-results"> Key re­sults</a></li><li><a href="#how-it-works"> How it works</a></li><li><a href="#implementation-and-learnings"> Implementation and learn­ings</a><ol><li><a href="#package-structure"> Package struc­ture</a></li><li><a href="#system-design"> System de­sign</a></li><li><a href="#serialization"> Serialization</a></li><li><a href="#unit-testing"> Unit test­ing</a></li><li><a href="#gui"> <span class="small-caps">GUI</span></a></li><li><a href="#wireframes"> Wireframes</a></li><li><a href="#screenshots"> Screenshots</a></li></ol></li><li><a href="#takeaways"> Takeaways</a></li></ol></nav><h2 id="motivation"><a class="header-anchor" href="#motivation">§</a> Motivation</h2>
+<p>Our ac­tions are largely dri­ven by emo­tions which are im­pul­sive and il­log­i­cal: they have no con­cept of long-term con­se­quence or risk. To act only by emo­tion is to act with­out a con­science. But,<span class="push-double"></span> <span class="pull-double">“</span>[w]ith con­scious­ness, we can de­lib­er­ately weigh what the senses tell us, and re­spond ac­cord­ingly” (Flow, M. Csikszentmihalyi, 2008, p. 24). If one does not have strict con­trol over her mind, it can be dif­ﬁ­cult to make de­ci­sions that align with her per­sonal val­ues — es­pe­cially in high stress sit­u­a­tions.</p>
+<p>To avoid feel­ing con­trolled by my emo­tions, I of­ten had to ne­go­ti­ate with my­self to make bet­ter de­ci­sions. If I de­cided to go with the eas­i­est or (momentarily) plea­sur­able choice, I would usu­ally re­gret it later. Procrastination was a com­mon theme.</p>
+<figure class="full-width align-main">
+  <div class="expand-on-desktop full-width-on-small-screens">
+    <img src="/images/projects/bitmind/bitmind-scan-problems.jpg" alt="A handwritten list of mental health themes from when I was brainstorming the initial idea.">
+    <figcaption>A hand­writ­ten list of men­tal health themes from when I was brain­storm­ing the ini­tial idea.</figcaption>
+  </div>
+</figure>
+<p>I knew I wanted to build some­thing re­lated to men­tal health and I went through a long list be­fore com­ing up with Bitmind.</p>
+<h2 id="project-requirements"><a class="header-anchor" href="#project-requirements">§</a> Project re­quire­ments</h2>
+<p>The <a href="https://courses.students.ubc.ca/cs/courseschedule?pname=subjarea&amp;tname=subj-course&amp;dept=CPSC&amp;course=210">course’s</a> re­quire­ments for a per­sonal pro­ject were that it must:</p>
+<ul>
+<li>Be writ­ten in Java.</li>
+<li>Have <code>model</code>, <code>controller</code>, <code>ui</code>&nbsp;, and <code>parsers</code> pack­ages — a loose <span class="small-caps">MVC</span> struc­ture. They also wanted us to try us­ing <span class="small-caps">JSON</span> and to im­ple­ment ba­sic se­ri­al­iza­tion.</li>
+<li>Use jU­nit 5 for unit tests with at least 95% code cov­er­age in the <code>model</code> and <code>parsers</code> pack­ages.</li>
+<li>Adhere to the course’s <a href="https://checkstyle.sourceforge.io/">check­style</a> test.</li>
+<li>Document all meth­ods with their pre­con­di­tions (“requires”), mu­ta­tions (“modiﬁes”), and pub­licly vis­i­ble side-ef­fects (“effects”).</li>
+<li>Use at least one of the ob­server, com­pos­ite, or it­er­a­tor de­sign pat­terns — I used the it­er­a­tor and builder pat­terns.</li>
+</ul>
+<p>They also eval­u­ated cou­pling and co­he­sion in the sys­tem, as well as uses of the <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">sin­gle-re­spon­si­bil­ity</a> and <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov sub­sti­tu­tion</a> prin­ci­ples.</p>
+<h2 id="test-driven-development"><a class="header-anchor" href="#test-driven-development">§</a> Test-driven de­vel­op­ment</h2>
+<p>Out of every­thing in this pro­ject, I am most sat­is­ﬁed with how easy <a href="https://en.wikipedia.org/wiki/Test-driven_development">test-dri­ven de­vel­op­ment</a> (<span class="small-caps">TDD</span>) made it to im­ple­ment the model with few bugs. It did take some time to write all the tests and doc­u­men­ta­tion, but I was able to eas­ily tweak the de­sign as I went along. Essentially, I shifted the com­plex­ity from de­bug­ging and hard think­ing to writ­ing tests and doc­u­men­ta­tion. The lat­ter is­n’t as glam­orous, but do­ing things that way can make life <em>a lot</em> eas­ier.</p>
+<h3 id="what-i-mean-by-%22shifting-complexity%22"><a class="header-anchor" href="#what-i-mean-by-%22shifting-complexity%22">§</a> What I mean by<span class="push-double"></span> <span class="pull-double">“</span>shifting com­plex­ity”</h3>
+<p>Shifting com­plex­ity from de­bug­ging to <span class="small-caps">TDD</span> is an ex­am­ple of what I meant in this tweet:</p>
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Experience teaches that<span class="push-double"></span> <span class="pull-double">“</span>removing com­plex­ity” is of­ten just shift­ing it some­where else. <a href="https://t.co/5hg83l2vdd">https://​t.co/​5hg83l2vdd</a></p>&mdash; Peyton Seigo (@PeytonSeigo) <a href="https://twitter.com/PeytonSeigo/status/1302120994698526722?ref_src=twsrc%5Etfw">September 5, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>When I wrote that how­ever, I was think­ing about the com­plex­ity that web frame­works claim to re­move with metapro­gram­ming magic. That com­plex­ity tends to reap­pear in other places, like im­pact­ing main­tain­abil­ity over the long haul and de­creas­ing the ﬂex­i­bil­ity of the frame­work. This ap­par­ent<span class="push-double"></span> <span class="pull-double">“</span>conservation of com­plex­ity” can oc­cur for one of two rea­sons:</p>
+<ol>
+<li>The code un­der-the-hood is com­plex and hard to un­der­stand. A (seemingly) sim­ple high level <span class="small-caps">API</span> does­n’t dis­so­ci­ate that com­plex­ity from your ap­pli­ca­tion.</li>
+<li>Every prob­lem has a base level of com­plex­ity.<span class="push-double"></span> <span class="pull-double">“</span>Complexity bedrock,” so to say. It is what makes the prob­lem it­self dif­ﬁ­cult and will al­ways ex­ist re­gard­less of how el­e­gant your so­lu­tion is.</li>
+</ol>
+<p>In terms of ad­dress­ing this prob­lem, <a href="http://danielberkompas.com/">Daniel Berkompas</a> sum­ma­rizes in­sights from José Valim, the cre­ator of the <a href="https://elixir-lang.org/">Elixir pro­gram­ming lan­guage</a>, on how one should ap­proach macros. That is, when de­sign­ing a sys­tem (in Elixir), one should:</p>
+<ol>
+<li>Design a good, core data struc­ture for prob­lem.</li>
+<li>Design a purely func­tional so­lu­tion — a layer on top of the data struc­ture.</li>
+<li>(Optionally,) add cos­metic macros to make the func­tional so­lu­tion eas­ier to gen­er­ate.</li>
+</ol>
+<p>In other words, fo­cus on writ­ing clean and ex­pres­sive code be­fore pret­ty­ing it up. This hi­er­ar­chy is great be­cause <em>even if</em> the macros are poorly writ­ten, a user can still use the un­der­ly­ing func­tions or data struc­tures. The Elixir <a href="https://elixir-lang.org/getting-started/meta/macros.html">guide on macros</a> sends this home by not­ing<span class="push-double"></span> <span class="pull-double">“</span>macros are not your <span class="small-caps">API</span><span class="push-double"></span><span class="pull-double">”</span> and<span class="push-double"></span> <span class="pull-double">“</span>the de­vel­oper plays a big role when writ­ing macros re­spon­si­bly.”</p>
+<blockquote>
+<p>Macros should only be used as a last re­sort. Remember that ex­plicit is bet­ter than im­plicit. Clear code is bet­ter than con­cise code.</p>
+</blockquote>
+<p>Anyways, I di­gress.</p>
+<h2 id="key-results"><a class="header-anchor" href="#key-results">§</a> Key re­sults</h2>
+<p>From the start of the pro­ject, I was un­sure whether I had the cor­rect de­sign in mind for the sys­tem I was try­ing to build. I was wor­ried about mess­ing up and<span class="push-double"></span> <span class="pull-double">“</span>designing it wrong,” but even­tu­ally had to ac­cept that there was no amount of prepa­ra­tion and plan­ning I could do to avoid that un­cer­tainty. In the end, writ­ing unit tests with <span class="small-caps">TDD</span> and vi­su­al­iz­ing how the user might use the app helped a lot with that.</p>
+<p>Some things I did:</p>
+<ul>
+<li>Designed, tested, and im­ple­mented an ob­jected-ori­ented sys­tem in Java from scratch (contrary to the starter code that uni­ver­sity courses of­ten give).
+<ul>
+<li>Wrote ro­bust classes by test­ing bound­ary cases and throw­ing ex­cep­tions when needed.</li>
+</ul>
+</li>
+<li>Applied the <a href="https://en.wikipedia.org/wiki/Iterator_pattern">it­er­a­tor</a> and <a href="https://en.wikipedia.org/wiki/Builder_pattern">builder</a> de­sign pat­terns.</li>
+<li>Used a sim­ple <span class="small-caps">JSON</span> li­brary to se­ri­al­ize and per­sist ap­pli­ca­tion state.</li>
+<li>Practiced <span class="small-caps">TDD</span> to write ex­ten­sive JUnit 5 unit tests with greater than 95% code cov­er­age in the model.</li>
+<li>Designed a <span class="small-caps">GUI</span> us­ing the JavaFX plat­form and <span class="small-caps">FXML</span>.</li>
+</ul>
+<h2 id="how-it-works"><a class="header-anchor" href="#how-it-works">§</a> How it works</h2>
+<p>This soft­ware helps peo­ple use log­i­cal rea­son­ing for mak­ing de­ci­sions. Mark Manson ar­gues that the pur­su­ing the<span class="push-double"></span> <span class="pull-double">“</span>path of least re­gret” is a good in­di­ca­tor for com­par­ing the im­por­tance of de­ci­sions. In other words, when one has mul­ti­ple choices, he should do what he would re­gret the least later on. It is said that the closer one is to a prob­lem, the harder it is to make an op­ti­mal de­ci­sion. The pur­pose of this ap­pli­ca­tion is to help users get their thoughts down<span class="push-double"></span> <span class="pull-double">“</span>on pa­per” to dis­tance them­selves from ir­ra­tional emo­tions and bi­ases.</p>
+<p>Each prob­lem to be dealt with cor­re­sponds to an en­try. A new en­try guides you through stat­ing the prob­lem and an ar­bi­trary num­ber of choices. Each choice is de­tailed with its pros and cons, po­ten­tial for long-shot suc­cess (i.e., some­thing that has a low chance for some great re­ward) and po­ten­tial re­grets for not pur­su­ing that choice. You can save your progress and come back at any point. After each choice has been ﬁlled out, the app sum­ma­rizes the de­ci­sion and choices in one view.</p>
+<h2 id="implementation-and-learnings"><a class="header-anchor" href="#implementation-and-learnings">§</a> Implementation and learn­ings</h2>
+<h3 id="package-structure"><a class="header-anchor" href="#package-structure">§</a> Package struc­ture</h3>
+<p>If you want to fol­low along, you can ﬁnd the <a href="https://github.com/pseigo/bitmind-decisions">source code</a> on GitHub. Below, we have the afore­men­tioned <code>model</code>, <code>ui</code>, and <code>controller</code> mod­ules for the <span class="small-caps">MVC</span> struc­ture.</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-package-structure-uml.svg" alt="A UML diagram showing the project's module and class structure.">
+  <figcaption>A sim­ple <span class="small-caps">UML</span> di­a­gram of the sys­tem.</figcaption>
+</figure>
+<p>There are a few other pack­ages as well that sep­a­rate out pieces of the sys­tem:</p>
+<ul>
+<li><code>exceptions</code>: Custom <code>Exception</code>s and <code>RuntimeExceptions</code> to be more ex­pres­sive with er­rors.</li>
+<li><code>parsers</code>: Parsers to con­vert <span class="small-caps">JSON</span> to Java classes for each class in the <code>model</code>.</li>
+<li><code>persistence</code>: A sin­gle class, <code>JsonEncoder</code>, that se­ri­al­izes a class’s state as <span class="small-caps">JSON</span>.</li>
+<li><code>util</code>: <code>JsonFileIO</code> which uses the <code>parsers</code> and <code>persistence</code> mod­ules to read from and write to disk, and <code>FxmlResourceLoader</code> to re­duce du­pli­ca­tion in the <code>ui</code>.</li>
+</ul>
+<h3 id="system-design"><a class="header-anchor" href="#system-design">§</a> System de­sign</h3>
+<p>A <code>Journal</code> holds <code>Entry</code>s that rep­re­sent prob­lems for which a de­ci­sion must be made. Each <code>Entry</code> has a <code>Status</code> and <code>Choices</code>, and those choices have <code>Consequence</code>s.</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-model-uml.svg" alt="A more detailed UML diagram of the project's \" model\" module.">
+  <figcaption>The main classes in the <code>model</code>. There are some other helper classes in the <code>model</code> pack­age as well (not pic­tured): <code>ReverseChronoEntryIterator</code> for it­er­at­ing over a <code>Journal</code>, and <code>EntryDateTime</code> which is a wrap­per around <code>ZonedDateTime</code> (I’ve no­ticed dates and times have a bumpy his­tory in the com­mon lan­guages. Not sure if I did the right thing here, but I think it served my pur­poses well enough).</figcaption>
+</figure>
+<h3 id="serialization"><a class="header-anchor" href="#serialization">§</a> Serialization</h3>
+<p>We were given a sim­ple <span class="small-caps">JSON</span> li­brary to use. Essentially, you have <code>JSONArray</code>s and <code>JSONObject</code>s.</p>
+<p>A <code>JSONObject</code> is an un­ordered col­lec­tion of name-value pairs, where the name is a string and the value is one of <code>Boolean</code>, <code>JSONArray</code>, <code>JSONObject</code>, <code>Number</code>, <code>String</code>, or the <code>JSONObject.NULL</code> ob­ject.</p>
+<p>A <code>JSONArray</code> is an or­dered list of val­ues with the same pos­si­ble types as <code>JSONObject</code><span class="push-single"></span><span class="pull-single">’</span>s val­ues.</p>
+<p>For ex­am­ple, this is how we can se­ri­al­ize an <code>Entry</code>:</p>
+<figure class="full-width align-main"><pre class="language-java"><code class="language-java"><span class="token comment">/**<br>  * Encodes given {@code Entry}—including all of its children—to a {@code JSONObject}.<br>  * @param entry object to encode<br>  * @return JSONObject created from given {@code Entry}<br>  */</span><br><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">JSONObject</span> <span class="token function">entryToJson</span><span class="token punctuation">(</span><span class="token class-name">Entry</span> entry<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// The enclosing Entry object that will be returned.</span><br>    <span class="token class-name">JSONObject</span> entryJson <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// A list of serialized `Choice` objects. We delegate the creation of</span><br>    <span class="token comment">// these `Choice`s to another function in the `JsonEncoder` class.</span><br>    <span class="token class-name">JSONArray</span> choicesList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Choice</span> choice <span class="token operator">:</span> entry<span class="token punctuation">.</span><span class="token function">choices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        choicesList<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token function">choiceToJson</span><span class="token punctuation">(</span>choice<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token comment">// Key-value pairs.</span><br>    entryJson<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"choices"</span><span class="token punctuation">,</span> choicesList<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    entryJson<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"description"</span><span class="token punctuation">,</span> entry<span class="token punctuation">.</span><span class="token function">description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    entryJson<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">,</span> entry<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token class-name">JSONObject</span> creationDateTime <span class="token operator">=</span> <span class="token function">entryDateTimeToJson</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">creationDateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token class-name">JSONObject</span> completionDateTime <span class="token operator">=</span> <span class="token function">entryDateTimeToJson</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">completionDateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    entryJson<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"creationDateTime"</span><span class="token punctuation">,</span> creationDateTime<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    entryJson<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"completionDateTime"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>completionDateTime <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token class-name">JSONObject</span><span class="token punctuation">.</span>NULL <span class="token operator">:</span> completionDateTime<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token keyword">return</span> entryJson<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre></figure>
+<h3 id="unit-testing"><a class="header-anchor" href="#unit-testing">§</a> Unit test­ing</h3>
+<p>Altogether, I wrote 66 unit tests cov­er­ing the <code>model</code>, <code>parsers</code>, <code>persistence</code>, and <code>util</code> mod­ules which runs in 113 mil­lisec­onds on my ma­chine. We were re­quired to reach at least 95% code cov­er­age in the <code>model</code> and <code>parsers</code> pack­ages, so that I did.</p>
+<p>I tested copy con­struc­tors, <code>equals()</code> over­rides, edge cases, and as many cases as I could come up with at each level of ab­strac­tion. Because the model stair­cases nicely from <code>Consequences</code>, to <code>Choice</code>s, to <code>Entry</code>s, to <code>Journal</code>s, it was easy enough to move from very spe­ciﬁc unit tests to more gen­eral func­tional-es­que tests.</p>
+<p>The other mod­ules were mostly sep­a­rated from every­thing else, so they were easy to test in iso­la­tion.</p>
+<h3 id="gui"><a class="header-anchor" href="#gui">§</a> <span class="small-caps">GUI</span></h3>
+<p>The <span class="small-caps">GUI</span> main­tains ap­pli­ca­tion state via the pub­lic <code>model</code> APIs and (de-)serializes data when needed with the <code>persistence</code> and <code>parsers</code> mod­ules. The ac­tual in­ter­face is coded up in <span class="small-caps">FXML</span>, JavaFX’s XML-based mark-up lan­guage. The <code>controller</code> mod­ule is re­spon­si­ble for ma­nip­u­lat­ing the ap­pli­ca­tion state when the user in­ter­acts with the <span class="small-caps">GUI</span>.</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-ui-uml.svg" alt="A more detailed UML diagram of the project's intended user interface (UI) module.">
+  <figcaption>A more de­tailed <span class="small-caps">UML</span> di­a­gram of the pro­jec­t’s in­tended user in­ter­face (<span class="small-caps">UI</span>) mod­ule.</figcaption>
+</figure>
+<p>Unfortunately, this is where I ran out of time. The trans­par­ent classes got done, yel­low is what I was work­ing on up to the dead­line, and the red is the re­main­der of what would have been im­ple­mented. Perhaps I’ll come back to it.</p>
+<p>The ﬂow was meant to go a lit­tle like this:</p>
+<ol>
+<li>The home screen gives you an overview of all your en­tries. You can cre­ate new en­tries from here.</li>
+<li>On cre­at­ing a new en­try, you give it a de­scrip­tion and ﬁll out the pos­si­ble choices.</li>
+<li>Then, one by one, you can ﬁll in the con­se­quences for each choice.</li>
+<li>At the end, you are given an overview of all the pos­si­ble choices and their con­se­quences. You can make a de­ci­sion right away or de­fer it to later.</li>
+</ol>
+<h3 id="wireframes"><a class="header-anchor" href="#wireframes">§</a> Wireframes</h3>
+<p>Here are some rough wire­frames of what I thought the user ﬂow should look like, along with some chicken scratch on how I might ex­pand on the <span class="small-caps">MVP</span>. At one point I did have a very nice sketch of the sum­mary screen, but it has since been lost. Alas.</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-scan-wireframe-1.jpg" alt="A rough wireframe sketch for the flow of the program.">
+ <img class="center-horizontal" src="/images/projects/bitmind/bitmind-scan-wireframe-2.jpg" alt="A continuation of the last wireframe.">
+ <figcaption>Some rough wire­frame sketches for the ﬂow of the pro­gram.</figcaption>
+</figure>
+<h3 id="screenshots"><a class="header-anchor" href="#screenshots">§</a> Screenshots</h3>
+<p>And here’s how it turned out!</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-home.png" alt="A screenshot of the app's dashboard.">
+  <figcaption>Dashboard.</figcaption>
+</figure>
+<p>This is the ap­p’s dash­board with some lorem ip­sum data. Note to self: use re­al­is­tic dummy data for demos next time.</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-new-entry.png" alt="A screenshot of the app's entry creation screen.">
+  <figcaption>Entry cre­ation screen.</figcaption>
+</figure>
+<p>This is the <code>Entry</code> cre­ation screen. The pen icons al­low you to ﬁll in the con­se­quences for each choice.</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-panic.png" alt="A screenshot of the last portion of the GUI that I was able to work on.">
+  <figcaption>The last por­tion of the <span class="small-caps">GUI</span> that I was able to work on.</figcaption>
+</figure>
+<p>This is where I panic. Hence the <code>:) !!!</code>.</p>
+<figure class="full-width align-main">
+  <img class="center-horizontal" src="/images/projects/bitmind/bitmind-exit.png" alt="A screenshot of the last portion of app's exit dialog.">
+  <figcaption>Exiting.</figcaption>
+</figure>
+<p>Hey, at least it has an exit di­a­log.</p>
+<h2 id="takeaways"><a class="header-anchor" href="#takeaways">§</a> Takeaways</h2>
+<p>Next time, it would be nice to have more time to spend on the <span class="small-caps">GUI</span>. The per­fec­tion­ist part of me is quite neu­rotic and or­derly about these things, so it’s hard to just get<span class="push-single"></span> <span class="pull-single">’</span>er done slop­pily and let it be. Everything must be in its place.</p>
+<p>With that said, I re­ally en­joyed <span class="small-caps">TDD</span> and would use it again in the fu­ture! It can feel like a slog at ﬁrst, but it pays div­i­dends if the prob­lem do­main does­n’t have too many un­knowns.</p>
+
+
+  <hr style="margin-top: 1.2em;"><p>
+      <em>Continue the dis­cus­sion <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet/?text=&ldquo;Bitmind - Decision Making Assistant&rdquo;&url=https://peytonseigo.ca/bitmind/&via=peytonseigo">on Twitter</a>!</em>
+    </p><div class="post-end-cta">
+      <b>I am avail­able for soft­ware in­tern­ships from April to December of 2022</b> (4 or 8 month place­ments). Take a look at some of the <a href="/projects">pro­jects I’ve done</a> or my <a href="https://github.com/pseigo/">GitHub pro­ﬁle</a>. If your team is look­ing for a com­puter sci­ence stu­dent, please feel free to <a href="/contact">get in touch</a>!
+    </div></article>
+
+</main>
+</body>
+</html>

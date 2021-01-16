@@ -1,0 +1,48 @@
+{
+  "name": "Peyton Seigo",
+  "short_name": "P. Seigo",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2577a6",
+  "background_color": "#ffffff",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Writing",
+      "short_name": "Writing",
+      "description": "Technical, personal, and philosophical, all at once",
+      "url": "/writing"
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "A dive into my personal projects",
+      "url": "/projects"
+    },
+    {
+      "name": "About",
+      "short_name": "About",
+      "description": "A bit about me",
+      "url": "/about"
+    },
+    {
+      "name": "Get in Touch",
+      "short_name": "Contact",
+      "description": "Ways to reach me",
+      "url": "/contact"
+    }
+  ]
+}
