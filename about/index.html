@@ -149,9 +149,26 @@
 </dd>
 </dl></div>
 </details>
-<p>At uni­ver­sity I’ve also used PostgreSQL (databases course), C and Assembly (systems), Racket (intro to pro­gram­ming), R (data sci­ence) and <span class="small-caps">MATLAB</span> (linear al­ge­bra). I’ve built two sub­stan­tial pro­jects, one in Java and one in JavaScript with Express. I use C++ for most small pro­jects and hop into the Python, Elixir or R shells for quick cal­cu­la­tions <i>(Python’s syn­tax is the most con­cise, Elixir’s func­tional prim­i­tives and the <code>Enum</code> mod­ule are a joy to use, and R is great for longer math prob­lems, plots and data analy­sis)</i>.</p>
+<p>At uni­ver­sity I’ve also used PostgreSQL (databases course), C and Assembly (systems), Racket (intro to pro­gram­ming), R (data sci­ence) and <span class="small-caps">MATLAB</span> (linear al­ge­bra). I’ve built two sub­stan­tial pro­jects, <a href="/bitmind">one in Java</a> and <a href="https://github.com/pseigo/warehouse-inventory-database-system">one in JavaScript with Express</a>. I use C++ for most small pro­jects and hop into the Python, Elixir or R shells for quick cal­cu­la­tions <i>(Python’s syn­tax is the most con­cise, Elixir’s func­tional prim­i­tives and the <code>Enum</code> mod­ule are a joy to use, and R is great for plots and data analy­sis)</i>.</p>
 <p>Feel free to take a look my <a href="/projects">pro­jects</a>.</p>
 <p>Cheers.</p>
+<script>
+const animateDetailsSummary = function() {
+  const details = document.querySelector("details");
+  const summary = details.querySelector("summary > span");
+  const closedText = summary.textContent; // Use initial state as closed text
+  const openText = "Hide details...";
+
+  const setSummaryText = function() {
+    summary.textContent = details.hasAttribute("open") ? openText : closedText;
+  };
+
+  details.addEventListener("toggle", setSummaryText);
+  setSummaryText();
+};
+
+animateDetailsSummary();
+</script>
 
 </article>
 
