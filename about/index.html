@@ -157,7 +157,7 @@ const animateDetailsSummary = function() {
   const details = document.querySelector("details");
   const summary = details.querySelector("summary > span");
   const closedText = summary.textContent; // Use initial state as closed text
-  const openText = "Hide details...";
+  const openText = "Hide...";
 
   const setSummaryText = function() {
     summary.textContent = details.hasAttribute("open") ? openText : closedText;
