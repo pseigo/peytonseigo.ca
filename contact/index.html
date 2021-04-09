@@ -111,7 +111,7 @@
 
 <article class="main">
   <h1>Contact</h1>
-  <p>Feel free to reach out through <a href="https://twitter.com/PeytonSeigo">Twitter</a> or email:</p>
+  <p>Feel free to reach out:</p>
 <figure class="full-width align-main">
 <div class="selector-code-block code-elixir" style="display: block"><pre class="language-elixir"><code class="language-elixir">iex<span class="token operator">></span> <span class="token string">"last name at alum dot ubc dot ca"</span> \<br><span class="token operator">|></span> String<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"last name"</span><span class="token punctuation">,</span> <span class="token string">"seigo"</span><span class="token punctuation">)</span> \<br><span class="token operator">|></span> String<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">" dot "</span><span class="token punctuation">,</span> <span class="token string">"."</span><span class="token punctuation">)</span> \<br><span class="token operator">|></span> String<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">" at "</span><span class="token punctuation">,</span> <span class="token string">"@"</span><span class="token punctuation">)</span></code></pre></div>
 <div class="selector-code-block code-python"><pre class="language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> email <span class="token operator">=</span> <span class="token string">'last name at alum dot ubc dot ca'</span> \<br>  <span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'last name'</span><span class="token punctuation">,</span> <span class="token string">'seigo'</span><span class="token punctuation">)</span> \<br>  <span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">' dot '</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span> \<br>  <span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">' at '</span><span class="token punctuation">,</span> <span class="token string">'@'</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><br><br><span class="token keyword">import</span> webbrowser<br>webbrowser<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'mailto:'</span> <span class="token operator">+</span> email<span class="token punctuation">)</span></code></pre></div>
@@ -127,21 +127,34 @@
 <h2>Code</h2>
 <div>I have a <a target="_blank" rel="noopener noreferrer" href="https://github.com/pseigo">GitHub</a> pro­ﬁle. You can ﬁnd de­tailed write-ups on some of my <a href="/projects">pro­jects</a> on this site.</div>
 <script>
-setLanguageBlocks = (language, value) => {
+/**
+  * For all code blocks highlighted as `language`, sets code block `display`
+  * style to `value`.
+  * 
+  * @param `language` to select
+  * @param `value` to set `display` style to for `language` code blocks
+  */
+function setLanguageBlocks(language, value) {
   const languageBlocks = document.getElementsByClassName('code-' + language);
+
   for (let block = 0; block < languageBlocks.length; block++) {
     languageBlocks[block].style.display = value;
   }
 };
 
-document.getElementById('code-language').onchange = function() {
-  const languages = ['elixir', 'python', 'java', 'bash'];
-  for (let i = 0; i < languages.length; i++) {
-    setLanguageBlocks(languages[i], 'none');
-  }
+function registerCodeSelectorHandler() {
+    document.getElementById('code-language').onchange = function() {
+      const languages = ['elixir', 'python', 'java', 'bash'];
+    
+      for (let i = 0; i < languages.length; i++) {
+        setLanguageBlocks(languages[i], 'none');
+      }
+    
+      setLanguageBlocks(this.value, 'block');
+    };
+}
 
-  setLanguageBlocks(this.value, 'block');
-};
+registerCodeSelectorHandler();
 </script>
 
 </article>
