@@ -117,11 +117,13 @@
 <div class="selector-code-block code-python"><pre class="language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> email <span class="token operator">=</span> <span class="token string">'last name at alum dot ubc dot ca'</span> \<br>  <span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'last name'</span><span class="token punctuation">,</span> <span class="token string">'seigo'</span><span class="token punctuation">)</span> \<br>  <span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">' dot '</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span> \<br>  <span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">' at '</span><span class="token punctuation">,</span> <span class="token string">'@'</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><br><br><span class="token keyword">import</span> webbrowser<br>webbrowser<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'mailto:'</span> <span class="token operator">+</span> email<span class="token punctuation">)</span></code></pre></div>
 <div class="selector-code-block code-java"><pre class="language-java"><code class="language-java">jshell<span class="token operator">></span> <span class="token class-name">String</span> <span class="token function">email</span><span class="token punctuation">(</span><span class="token class-name">String</span> toParse<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> toParse<span class="token punctuation">.</span><span class="token function">replaceFirst</span><span class="token punctuation">(</span><span class="token string">"last name"</span><span class="token punctuation">,</span> <span class="token string">"seigo"</span><span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">" dot "</span><span class="token punctuation">,</span> <span class="token string">"."</span><span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">replaceFirst</span><span class="token punctuation">(</span><span class="token string">" at "</span><span class="token punctuation">,</span> <span class="token string">"@"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><span class="token class-name">String</span> email <span class="token operator">=</span> <span class="token function">email</span><span class="token punctuation">(</span><span class="token string">"last name at alum dot ubc dot ca"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>java<span class="token punctuation">.</span>awt<span class="token punctuation">.</span><span class="token class-name">Desktop</span><span class="token punctuation">.</span><span class="token function">getDesktop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">browse</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">URI</span><span class="token punctuation">(</span><span class="token string">"mailto:"</span> <span class="token operator">+</span> email<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <div class="selector-code-block code-bash"><pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"last name at alum dot ubc dot ca"</span> <span class="token operator">|</span> <span class="token punctuation">\</span><br>  <span class="token function">sed</span> <span class="token string">'s/last name/seigo/; s/ at /@/; s/ dot /./g'</span></code></pre></div>
+<div class="selector-code-block code-javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token string">"spam@fightspam.gc.ca"</span><span class="token punctuation">;</span></code></pre></div>
 <select name="code-language" id="code-language" style="float: right">
   <option value="elixir">Elixir</option>
   <option value="python">Python</option>
   <option value="java">Java</option>
   <option value="bash">Bash</option>
+  <option value="javascript">JavaScript (bots only)</option>
 </select>
 </figure>
 <h2>Code</h2>
@@ -130,7 +132,7 @@
 /**
   * For all code blocks highlighted as `language`, sets code block `display`
   * style to `value`.
-  * 
+  *
   * @param `language` to select
   * @param `value` to set `display` style to for `language` code blocks
   */
@@ -144,12 +146,12 @@ function setLanguageBlocks(language, value) {
 
 function registerCodeSelectorHandler() {
     document.getElementById('code-language').onchange = function() {
-      const languages = ['elixir', 'python', 'java', 'bash'];
-    
+      const languages = ['elixir', 'python', 'java', 'bash', 'javascript'];
+
       for (let i = 0; i < languages.length; i++) {
         setLanguageBlocks(languages[i], 'none');
       }
-    
+
       setLanguageBlocks(this.value, 'block');
     };
 }
